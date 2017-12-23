@@ -134,6 +134,7 @@ BOOL init_symbols()
             OFFSET_ROP_ADD_X0_X0_0x10                   = 0xfffffff006481174;
             OFFSET_ROOT_MOUNT_V_NODE                    = 0xfffffff0075a40b0;
         }
+    }
         else if (strcmp(u.machine, "iPhone8,1") == 0) {
         if ([ver  isEqual: @"Version 10.3.1 (Build 14E304)"])
         {
