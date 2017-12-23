@@ -39,6 +39,7 @@ Only some devices work: offsets will be added by time
 Supported devices:
 
 - 5S (10.3.1 - tested)
+- 6 (10.3.1 - tested)
 - 7 10.3.1 (not tested)
 - SE 10.3.1 (not tested - experimental) (NEW IN BETA 2)
 - 6S 10.3.1 (not tested) (NEW IN BETA 3)
