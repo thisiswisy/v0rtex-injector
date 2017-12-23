@@ -1,8 +1,6 @@
 # v0rtex-injector beta 3
 
-~~Get v0rtex with tweaks here: https://www.dropbox.com/s/s3yi19sth2hw09d/v0rtex-with-tweaks.ipa?dl=0~~ OLD VERSION
-- ipa coming soon
-
+Get v0rtex tweak injector here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b3 https://www.dropbox.com/s/s3yi19sth2hw09d/v0rtex-with-tweaks.ipa?dl=0
 - Only tweaks that hook springboard and don't use post installation/removal scripts will work
 
 - you can't change preferences in settings. gotta do that manually (don't ask how)
@@ -18,7 +16,7 @@
 ~~there's no safe mode or no-substrate mode, be careful what you install~~
 - Added no-tweaks mode (NEW BETA 2) 
 
-- to install find link to the deb file, run exploit, paste, click ok
+- to install find link to the deb file, run exploit, paste, click ok. If you want to just activate tweaks click ok without entering any link
 
 - I've tested this multiple times and didn't encounter any bootloop but USE THIS AT YOUR OWN RISK. IT IS A BETA! The code should be fairly better now
 
