@@ -1,6 +1,7 @@
 # v0rtex-injector beta 3
 
-Get v0rtex tweak injector here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b3 https://www.dropbox.com/s/s3yi19sth2hw09d/v0rtex-with-tweaks.ipa?dl=0
+Get v0rtex tweak injector here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b3
+
 - Only tweaks that hook springboard and don't use post installation/removal scripts will work
 
 - you can't change preferences in settings. gotta do that manually (don't ask how)
