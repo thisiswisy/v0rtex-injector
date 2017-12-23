@@ -22,6 +22,8 @@
 
 - I've tested this multiple times and didn't encounter any bootloop but USE THIS AT YOUR OWN RISK. IT IS A BETA! The code should be fairly better now
 
+- **INSTALLING TWEAKS SHOULD BE 100% SAFE, MY CONCERN IS EXTRACTING THE BOOTSTRAP, ONCE YOU GET THAT WORKING THR REST SHOULD BE OK.** postinst scripts do not run, all that will be done is injecting tweaks into SpringBoard. The worst is a respring loop that can be fixed by rebooting 
+
 tweaks tested & confirmed working by me:
 
 - Cylinder
@@ -41,7 +43,7 @@ Supported devices:
 - 7 10.3.1 (not tested)
 - SE 10.3.1 (not tested) (NEW IN BETA 2)
 
-TODO: install substrate properly, clean up symbols.m, use updated exploit
+TODO: install substrate properly, clean up symbols.m, use updated exploit, A WAY TO REMOVE TWEAKS, more devices
 
 thanks to s1guza for exploit, stek29 for telling me how to get cydia work, cheesecakeufo for telling stek29 how to get cydia work, xerub for libjb, theninjaprawn for his techniques, PsychoTea for some other stuff, thisiswisy for hosting on his github & cleaning up code a little bit etc.
 
