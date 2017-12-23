@@ -1,4 +1,4 @@
-# v0rtex-injector beta 2
+# v0rtex-injector beta 3
 
 ~~Get v0rtex with tweaks here: https://www.dropbox.com/s/s3yi19sth2hw09d/v0rtex-with-tweaks.ipa?dl=0~~ OLD VERSION
 - ipa coming soon
@@ -42,6 +42,7 @@ Supported devices:
 - 5S (10.3.1 - tested)
 - 7 10.3.1 (not tested)
 - SE 10.3.1 (not tested) (NEW IN BETA 2)
+- 6S 10.3.1 (not tested) (NEW IN BETA 3)
 
 TODO: install substrate properly, clean up symbols.m, use updated exploit, A WAY TO REMOVE TWEAKS, more devices
 
