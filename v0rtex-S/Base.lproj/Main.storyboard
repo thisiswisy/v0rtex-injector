@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sw2-zo-7Oh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ld5-Ee-sTN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0rtex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM9-Bk-Qsl">
+                                <rect key="frame" x="88" y="50" width="200" height="75"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="55"/>
+                                <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exploit by @Siguza" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oM-Jp-MHu">
+                                <rect key="frame" x="111" y="125" width="150" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="UNi-bo-qyc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJr-Jm-0Qu">
+                                <rect key="frame" x="15" y="380" width="345" height="250"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmQ-kM-PGs">
+                                <rect key="frame" x="112" y="200" width="150" height="50"/>
+                                <color key="backgroundColor" red="0.10265028575143023" green="0.10373081507512949" blue="0.10373081507512949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Vv-sR-Egy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="run sploit">
+                                    <color key="titleColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="runSploitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iPg-m7-I0Y"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable tweaks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nE6-Wt-eYc">
+                                <rect key="frame" x="37" y="300" width="110" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.61251533031463623" green="0.49021977186203003" blue="0.99676185846328735" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0A-mB-vlF">
+                                <rect key="frame" x="286" y="295" width="51" height="31"/>
+                                <color key="onTintColor" red="0.61251533030000005" green="0.49021977189999999" blue="0.99676185849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" red="0.071020887305699443" green="0.071020887305699443" blue="0.071020887305699443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FJr-Jm-0Qu" firstAttribute="top" secondItem="q0A-mB-vlF" secondAttribute="bottom" constant="54" id="4Ag-Ot-byJ"/>
+                            <constraint firstItem="aM9-Bk-Qsl" firstAttribute="centerX" secondItem="FJr-Jm-0Qu" secondAttribute="centerX" id="ALC-Ky-Wne"/>
+                            <constraint firstItem="aM9-Bk-Qsl" firstAttribute="top" secondItem="sw2-zo-7Oh" secondAttribute="bottom" constant="30" id="EDb-71-Ocg"/>
+                            <constraint firstItem="q0A-mB-vlF" firstAttribute="top" secondItem="sw2-zo-7Oh" secondAttribute="bottom" constant="275" id="GDH-w0-vX9"/>
+                            <constraint firstItem="aM9-Bk-Qsl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="72" id="M2A-Pv-IxC"/>
+                            <constraint firstItem="pmQ-kM-PGs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="Map-Ed-cNE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="q0A-mB-vlF" secondAttribute="trailing" constant="24" id="NUo-GR-3Y5"/>
+                            <constraint firstItem="4oM-Jp-MHu" firstAttribute="top" secondItem="aM9-Bk-Qsl" secondAttribute="bottom" id="R0L-o2-cP2"/>
+                            <constraint firstItem="pmQ-kM-PGs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TPn-uK-C9N"/>
+                            <constraint firstItem="Ld5-Ee-sTN" firstAttribute="top" secondItem="FJr-Jm-0Qu" secondAttribute="bottom" constant="37" id="UWJ-Ph-iZO"/>
+                            <constraint firstItem="pmQ-kM-PGs" firstAttribute="centerX" secondItem="FJr-Jm-0Qu" secondAttribute="centerX" id="VJF-2s-c8K"/>
+                            <constraint firstItem="pmQ-kM-PGs" firstAttribute="top" secondItem="4oM-Jp-MHu" secondAttribute="bottom" constant="50" id="k6j-DK-KqP"/>
+                            <constraint firstItem="FJr-Jm-0Qu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-1" id="mFj-ER-WAo"/>
+                            <constraint firstItem="q0A-mB-vlF" firstAttribute="centerY" secondItem="nE6-Wt-eYc" secondAttribute="centerY" id="uAv-Rn-kNr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4oM-Jp-MHu" secondAttribute="trailing" constant="98" id="ufA-eE-R4A"/>
+                            <constraint firstItem="nE6-Wt-eYc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="v9B-Eu-QSY"/>
+                            <constraint firstItem="4oM-Jp-MHu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="95" id="yc7-tR-W7j"/>
+                            <constraint firstItem="nE6-Wt-eYc" firstAttribute="top" secondItem="pmQ-kM-PGs" secondAttribute="bottom" constant="50" id="ygR-CK-ooe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hastweaks" destination="q0A-mB-vlF" id="4bB-sh-3KW"/>
+                        <outlet property="outputView" destination="FJr-Jm-0Qu" id="6kC-Js-EKS"/>
+                        <outlet property="sploitButton" destination="pmQ-kM-PGs" id="7i5-1E-JNa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+</document>

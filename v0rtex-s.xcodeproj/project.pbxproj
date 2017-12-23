@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		820EF0671FEAB0B2006104ED /* libjb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 820EF0661FEAB0B2006104ED /* libjb.a */; };
+		820EF06A1FEAB30D006104ED /* patchfinder64.c in Sources */ = {isa = PBXBuildFile; fileRef = 820EF0681FEAB30D006104ED /* patchfinder64.c */; };
+		82178E0A1FEAFAF3002975CE /* amfi.m in Sources */ = {isa = PBXBuildFile; fileRef = 82178E091FEAFAF3002975CE /* amfi.m */; };
+		828494641FEC371E00C59308 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = 828494631FEC371E00C59308 /* bootstrap.tar */; };
+		82B603DC1FEC555800241A80 /* tar in Resources */ = {isa = PBXBuildFile; fileRef = 82B603D71FEC555700241A80 /* tar */; };
+		82B603DD1FEC555800241A80 /* bash in Resources */ = {isa = PBXBuildFile; fileRef = 82B603D81FEC555700241A80 /* bash */; };
+		82B603DE1FEC555800241A80 /* launchctl in Resources */ = {isa = PBXBuildFile; fileRef = 82B603DA1FEC555800241A80 /* launchctl */; };
+		82B603DF1FEC555800241A80 /* dropbear in Resources */ = {isa = PBXBuildFile; fileRef = 82B603DB1FEC555800241A80 /* dropbear */; };
+		B58B32401FE4EBA300EB7B47 /* kernel.m in Sources */ = {isa = PBXBuildFile; fileRef = B58B323D1FE4EBA300EB7B47 /* kernel.m */; };
+		B58B32441FE4ED3B00EB7B47 /* ls in Resources */ = {isa = PBXBuildFile; fileRef = B58B32431FE4ED3B00EB7B47 /* ls */; };
+		B58B32461FE4ED6300EB7B47 /* symbols.m in Sources */ = {isa = PBXBuildFile; fileRef = B58B32451FE4ED6300EB7B47 /* symbols.m */; };
+		B58B32491FE4F3DF00EB7B47 /* root-rw.m in Sources */ = {isa = PBXBuildFile; fileRef = B58B32481FE4F3DF00EB7B47 /* root-rw.m */; };
+		B5BB8F791FE4D97800B60FDC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B5BB8F781FE4D97800B60FDC /* README.md */; };
+		EE5169281FDC2A7000805460 /* v0rtex.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5169271FDC2A7000805460 /* v0rtex.m */; };
+		EE5252AE1FDA4F2F00993801 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5252AD1FDA4F2F00993801 /* AppDelegate.m */; };
+		EE5252B11FDA4F2F00993801 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5252B01FDA4F2F00993801 /* ViewController.m */; };
+		EE5252B41FDA4F2F00993801 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5252B21FDA4F2F00993801 /* Main.storyboard */; };
+		EE5252B61FDA4F2F00993801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE5252B51FDA4F2F00993801 /* Assets.xcassets */; };
+		EE5252B91FDA4F2F00993801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5252B71FDA4F2F00993801 /* LaunchScreen.storyboard */; };
+		EE5252BC1FDA4F2F00993801 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5252BB1FDA4F2F00993801 /* main.m */; };
+		EE665E261FDC013D00FF457E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE665E251FDC013D00FF457E /* IOKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		820EF0661FEAB0B2006104ED /* libjb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjb.a; path = "v0rtex-S/the_super_fun_part/libjb.a"; sourceTree = "<group>"; };
+		820EF0681FEAB30D006104ED /* patchfinder64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = patchfinder64.c; path = "v0rtex-S/the_super_fun_part/patchfinder64.c"; sourceTree = "<group>"; };
+		82178E091FEAFAF3002975CE /* amfi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = amfi.m; path = "v0rtex-S/the_super_fun_part/amfi.m"; sourceTree = "<group>"; };
+		828494631FEC371E00C59308 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; name = bootstrap.tar; path = "v0rtex-S/bootstrap.tar"; sourceTree = "<group>"; };
+		8299A1741FEAB03D00BA3AB4 /* the_super_fun_part */ = {isa = PBXFileReference; lastKnownFileType = folder; path = the_super_fun_part; sourceTree = "<group>"; };
+		8299A1751FEAB04600BA3AB4 /* the_super_fun_part */ = {isa = PBXFileReference; lastKnownFileType = folder; path = the_super_fun_part; sourceTree = "<group>"; };
+		82B603D71FEC555700241A80 /* tar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = tar; path = "v0rtex-S/tar"; sourceTree = "<group>"; };
+		82B603D81FEC555700241A80 /* bash */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = bash; path = "v0rtex-S/bash"; sourceTree = "<group>"; };
+		82B603D91FEC555700241A80 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; name = bootstrap.tar; path = "v0rtex-S/bootstrap.tar"; sourceTree = "<group>"; };
+		82B603DA1FEC555800241A80 /* launchctl */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = launchctl; path = "v0rtex-S/launchctl"; sourceTree = "<group>"; };
+		82B603DB1FEC555800241A80 /* dropbear */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = dropbear; path = "v0rtex-S/dropbear"; sourceTree = "<group>"; };
+		B58B323D1FE4EBA300EB7B47 /* kernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kernel.m; sourceTree = "<group>"; };
+		B58B323F1FE4EBA300EB7B47 /* kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kernel.h; sourceTree = "<group>"; };
+		B58B32431FE4ED3B00EB7B47 /* ls */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ls; sourceTree = "<group>"; };
+		B58B32451FE4ED6300EB7B47 /* symbols.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = symbols.m; sourceTree = "<group>"; };
+		B58B32471FE4EDCF00EB7B47 /* symbols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = symbols.h; sourceTree = "<group>"; };
+		B58B32481FE4F3DF00EB7B47 /* root-rw.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "root-rw.m"; sourceTree = "<group>"; };
+		B58B324A1FE4F3F900EB7B47 /* root-rw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "root-rw.h"; sourceTree = "<group>"; };
+		B5BB8F781FE4D97800B60FDC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EE5169271FDC2A7000805460 /* v0rtex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = v0rtex.m; sourceTree = "<group>"; };
+		EE5169291FDC2C9D00805460 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		EE5252A91FDA4F2F00993801 /* v0rtex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = v0rtex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE5252AC1FDA4F2F00993801 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EE5252AD1FDA4F2F00993801 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EE5252AF1FDA4F2F00993801 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EE5252B01FDA4F2F00993801 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EE5252B31FDA4F2F00993801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE5252B51FDA4F2F00993801 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE5252B81FDA4F2F00993801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE5252BA1FDA4F2F00993801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE5252BB1FDA4F2F00993801 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE665E251FDC013D00FF457E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
+		EE81AD151FDEF1AB0094418B /* v0rtex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v0rtex.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE5252A61FDA4F2F00993801 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				820EF0671FEAB0B2006104ED /* libjb.a in Frameworks */,
+				EE665E261FDC013D00FF457E /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE5252A01FDA4F2F00993801 = {
+			isa = PBXGroup;
+			children = (
+				828494631FEC371E00C59308 /* bootstrap.tar */,
+				82B603D81FEC555700241A80 /* bash */,
+				82B603D91FEC555700241A80 /* bootstrap.tar */,
+				82B603DB1FEC555800241A80 /* dropbear */,
+				82B603DA1FEC555800241A80 /* launchctl */,
+				82B603D71FEC555700241A80 /* tar */,
+				82178E091FEAFAF3002975CE /* amfi.m */,
+				820EF0681FEAB30D006104ED /* patchfinder64.c */,
+				B5BB8F781FE4D97800B60FDC /* README.md */,
+				EE5252AB1FDA4F2F00993801 /* v0rtex-S */,
+				EE5252AA1FDA4F2F00993801 /* Products */,
+				EE665E201FDBFDB600FF457E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EE5252AA1FDA4F2F00993801 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE5252A91FDA4F2F00993801 /* v0rtex.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE5252AB1FDA4F2F00993801 /* v0rtex-S */ = {
+			isa = PBXGroup;
+			children = (
+				EEAC27D31FDDB0A3003C1801 /* Supporting Files */,
+				B58B32431FE4ED3B00EB7B47 /* ls */,
+				8299A1751FEAB04600BA3AB4 /* the_super_fun_part */,
+				EE5252BB1FDA4F2F00993801 /* main.m */,
+				EE5252AC1FDA4F2F00993801 /* AppDelegate.h */,
+				EE5252AD1FDA4F2F00993801 /* AppDelegate.m */,
+				EE5252AF1FDA4F2F00993801 /* ViewController.h */,
+				EE5252B01FDA4F2F00993801 /* ViewController.m */,
+				EE5169291FDC2C9D00805460 /* common.h */,
+				EE81AD151FDEF1AB0094418B /* v0rtex.h */,
+				EE5169271FDC2A7000805460 /* v0rtex.m */,
+				B58B323F1FE4EBA300EB7B47 /* kernel.h */,
+				B58B323D1FE4EBA300EB7B47 /* kernel.m */,
+				B58B32451FE4ED6300EB7B47 /* symbols.m */,
+				B58B32471FE4EDCF00EB7B47 /* symbols.h */,
+				B58B32481FE4F3DF00EB7B47 /* root-rw.m */,
+				B58B324A1FE4F3F900EB7B47 /* root-rw.h */,
+			);
+			path = "v0rtex-S";
+			sourceTree = "<group>";
+		};
+		EE665E201FDBFDB600FF457E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				820EF0661FEAB0B2006104ED /* libjb.a */,
+				EE665E251FDC013D00FF457E /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEAC27D31FDDB0A3003C1801 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8299A1741FEAB03D00BA3AB4 /* the_super_fun_part */,
+				EE5252BA1FDA4F2F00993801 /* Info.plist */,
+				EE5252B51FDA4F2F00993801 /* Assets.xcassets */,
+				EE5252B71FDA4F2F00993801 /* LaunchScreen.storyboard */,
+				EE5252B21FDA4F2F00993801 /* Main.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE5252A81FDA4F2F00993801 /* v0rtex */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE5252BF1FDA4F2F00993801 /* Build configuration list for PBXNativeTarget "v0rtex" */;
+			buildPhases = (
+				EE5252A51FDA4F2F00993801 /* Sources */,
+				EE5252A61FDA4F2F00993801 /* Frameworks */,
+				EE5252A71FDA4F2F00993801 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = v0rtex;
+			productName = v0rtex;
+			productReference = EE5252A91FDA4F2F00993801 /* v0rtex.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE5252A11FDA4F2F00993801 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Sticktron;
+				TargetAttributes = {
+					EE5252A81FDA4F2F00993801 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EE5252A41FDA4F2F00993801 /* Build configuration list for PBXProject "v0rtex-s" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE5252A01FDA4F2F00993801;
+			productRefGroup = EE5252AA1FDA4F2F00993801 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE5252A81FDA4F2F00993801 /* v0rtex */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE5252A71FDA4F2F00993801 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B58B32441FE4ED3B00EB7B47 /* ls in Resources */,
+				82B603DC1FEC555800241A80 /* tar in Resources */,
+				82B603DD1FEC555800241A80 /* bash in Resources */,
+				828494641FEC371E00C59308 /* bootstrap.tar in Resources */,
+				82B603DE1FEC555800241A80 /* launchctl in Resources */,
+				82B603DF1FEC555800241A80 /* dropbear in Resources */,
+				EE5252B91FDA4F2F00993801 /* LaunchScreen.storyboard in Resources */,
+				EE5252B61FDA4F2F00993801 /* Assets.xcassets in Resources */,
+				B5BB8F791FE4D97800B60FDC /* README.md in Resources */,
+				EE5252B41FDA4F2F00993801 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE5252A51FDA4F2F00993801 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B58B32491FE4F3DF00EB7B47 /* root-rw.m in Sources */,
+				B58B32401FE4EBA300EB7B47 /* kernel.m in Sources */,
+				B58B32461FE4ED6300EB7B47 /* symbols.m in Sources */,
+				EE5252B11FDA4F2F00993801 /* ViewController.m in Sources */,
+				EE5252BC1FDA4F2F00993801 /* main.m in Sources */,
+				EE5252AE1FDA4F2F00993801 /* AppDelegate.m in Sources */,
+				82178E0A1FEAFAF3002975CE /* amfi.m in Sources */,
+				820EF06A1FEAB30D006104ED /* patchfinder64.c in Sources */,
+				EE5169281FDC2A7000805460 /* v0rtex.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE5252B21FDA4F2F00993801 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE5252B31FDA4F2F00993801 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE5252B71FDA4F2F00993801 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE5252B81FDA4F2F00993801 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE5252BD1FDA4F2F00993801 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "/Users/sticktron/theos/include/**";
+			};
+			name = Debug;
+		};
+		EE5252BE1FDA4F2F00993801 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "/Users/sticktron/theos/include/**";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE5252C01FDA4F2F00993801 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22G2QV87A2;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/v0rtex-S/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/v0rtex-S/the_super_fun_part",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sticktron.v0rtexroot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE5252C11FDA4F2F00993801 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22G2QV87A2;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/v0rtex-S/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/v0rtex-S/the_super_fun_part",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sticktron.v0rtexroot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE5252A41FDA4F2F00993801 /* Build configuration list for PBXProject "v0rtex-s" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE5252BD1FDA4F2F00993801 /* Debug */,
+				EE5252BE1FDA4F2F00993801 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE5252BF1FDA4F2F00993801 /* Build configuration list for PBXNativeTarget "v0rtex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE5252C01FDA4F2F00993801 /* Debug */,
+				EE5252C11FDA4F2F00993801 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE5252A11FDA4F2F00993801 /* Project object */;
+}

