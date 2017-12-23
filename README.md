@@ -40,8 +40,10 @@ Supported devices:
 
 - 5S (10.3.1 - tested)
 - 7 10.3.1 (not tested)
-- SE 10.3.1 (not tested) (NEW IN BETA 2)
+- SE 10.3.1 (not tested - experimental) (NEW IN BETA 2)
 - 6S 10.3.1 (not tested) (NEW IN BETA 3)
+- 6S 10.3.2 (not tested)
+- 6S 10.3.3 (not tested - experimental)
 
 TODO: install substrate properly, clean up symbols.m, use updated exploit, A WAY TO REMOVE TWEAKS, more devices
 
