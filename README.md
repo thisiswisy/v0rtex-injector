@@ -13,7 +13,7 @@
 
 - this is for devs & inpatient people
 
-- ssh is temporarily disabled (read the comments to see why)
+- ~~ssh is temporarily disabled (read the comments to see why)~~ Added SSH!
 
 ~~there's no safe mode or no-substrate mode, be careful what you install~~
 - Added no-tweaks mode (NEW BETA 2) 
