@@ -440,6 +440,9 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             [fileMgr removeItemAtPath:@"/v0rtex/dropbear" error:nil];
             [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
             [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
+            chmod("/Library/LaunchDaemons/dropbear.plist", 0644);
+            chown("/Library/LaunchDaemons/dropbear.plist", 0, 0);
+            system("launchctl load /Library/LaunchDaemons/dropbear.plist"); //SSH
             if ([self.hastweaks isOn]) {
              system("killall SpringBoard"); //use modified killall to inject tweaks with cynject (cynject is the part of substrate that works without a KPP bypass)
             }
