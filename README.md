@@ -1,6 +1,7 @@
-# v0rtex-injector
+# v0rtex-injector beta 2
 
-Get v0rtex with tweaks here: https://www.dropbox.com/s/s3yi19sth2hw09d/v0rtex-with-tweaks.ipa?dl=0
+~~Get v0rtex with tweaks here: https://www.dropbox.com/s/s3yi19sth2hw09d/v0rtex-with-tweaks.ipa?dl=0~~ OLD VERSION
+- ipa coming soon
 
 - Only tweaks that hook springboard and don't use post installation/removal scripts will work
 
@@ -15,7 +16,7 @@ Get v0rtex with tweaks here: https://www.dropbox.com/s/s3yi19sth2hw09d/v0rtex-wi
 - ssh is temporarily disabled (read the comments to see why)
 
 ~~there's no safe mode or no-substrate mode, be careful what you install~~
-- Added no-tweaks mode
+- Added no-tweaks mode (NEW BETA 2) 
 
 - to install find link to the deb file, run exploit, paste, click ok
 
@@ -38,7 +39,7 @@ Supported devices:
 
 - 5S (10.3.1 - tested)
 - 7 10.3.1 (not tested)
-- SE 10.3.1 (not tested)
+- SE 10.3.1 (not tested) (NEW IN BETA 2)
 
 TODO: install substrate properly, clean up symbols.m, use updated exploit
 
