@@ -262,8 +262,8 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"tweak.deb"];
             [urlData writeToFile:filePath atomically:YES];//save it
             sleep(2);
-            [self runsploit]; //run exploit
         }
+        [self runsploit];
         
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
@@ -355,9 +355,8 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
         [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
         [fileMgr removeItemAtPath:@"/bin/sh" error:nil];
-        //uncomment those lines if you want to re-etract the bootstrap
-        //chmod("/.installed_v0rtex", 0777);
-        //[fileMgr removeItemAtPath:@"/.installed_v0rtex" error:nil];
+        chmod("/.installed_v0rtexb4", 0777);
+        [fileMgr removeItemAtPath:@"/.installed_v0rtexb4" error:nil];
         
         // copy in all our bins
         NSLog(@"copying bins...");
@@ -380,6 +379,10 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
                          toPath:@"/v0rtex/tar" error: &error];
         if (error) NSLog(@"Error: %@", error);
         
+        [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/extrainst_"]
+                         toPath:@"/v0rtex/extrainst_" error: &error];
+        if (error) NSLog(@"Error: %@", error);
+        
         [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/bash"]
                          toPath:@"/bin/sh" error: &error];
         if (error) NSLog(@"Error: %@", error);
@@ -388,6 +391,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         chmod("/v0rtex/dropbear", 0777);
         chmod("/v0rtex/tar", 0777);
         chmod("/bin/sh", 0777);
+        chmod("/v0rtex/extrainst_", 0777);
         
         // create dir's and files for dropbear
         mkdir("/etc", 0777);
@@ -406,7 +410,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
     
     {
         //installed?
-        int f = open("/.installed_v0rtex", O_RDONLY);
+        int f = open("/.installed_v0rtexb4", O_RDONLY);
         
         if (f == -1) {
             // extract bootstrap.tar
@@ -414,7 +418,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         
             //trust all the binaries
             
-            open("/.installed_v0rtex", O_RDWR|O_CREAT);
+            open("/.installed_v0rtexb4", O_RDWR|O_CREAT);
             open("/.cydia_no_stash",O_RDWR|O_CREAT);
             
             system("/usr/bin/uicache");
@@ -431,7 +435,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         //second amfi patch, binaries, tweaks & Cydia
         int amfi2 = patch_amfi(tfp0, kslide, NO, [self.hastweaks isOn]);
         [self writeText:[NSString stringWithFormat:@"cydia amfi: %d", amfi2]];
-        
+        system("/v0rtex/extrainst_");
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSLog(@"cleaning up...");
             [fileMgr removeItemAtPath:@"/v0rtex/bins" error:nil];
@@ -440,26 +444,19 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             [fileMgr removeItemAtPath:@"/v0rtex/dropbear" error:nil];
             [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
             [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/extrainst_" error:nil];
+            
             chmod("/Library/LaunchDaemons/dropbear.plist", 0644);
             chown("/Library/LaunchDaemons/dropbear.plist", 0, 0);
-            system("launchctl load /Library/LaunchDaemons/dropbear.plist"); //SSH
+            chmod("/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist", 0644);
+            chown("/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist", 0, 0);
+            system("launchctl load /Library/LaunchDaemons/*");
+            
             if ([self.hastweaks isOn]) {
-             system("killall SpringBoard"); //use modified killall to inject tweaks with cynject (cynject is the part of substrate that works without a KPP bypass)
+             system("killall_ SpringBoard && cynject $(pidof SpringBoard) /Library/MobileSubstrate/MobileSubstrate.dylib");
             }
         });
         
-       
-        
-        
-        NSLog(@"MAKE SURE TO FIRST RUN 'export PATH=$PATH:/v0rtex/bins' WHEN FIRST CONNECTING TO SSH");
-        /*ssh is disabled for these reasons:
-         - I can't run after killall SpringBoard as the app will also be quited
-         - If I run it before killall SpringBoard it seems to freeze the app and the device doesn't respring
-         will take a look later. Possibly will make a launchdaemon to properly start it
-         */
-        //execprog(tfp0, kslide, kern_ucred, "/v0rtex/dropbear", (const char**)&(const char*[]){
-           //"/v0rtex/dropbear", "-R", "-E", "-m", "-F", "-S", "/", NULL
-       //});
      
     }
     

@@ -153,26 +153,12 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
     //first amfi patch
     
     if (isv0rtex) {
-    printf("v0rtex rv = %d, numhash = %d\n", grab_hashes("/v0rtex", kread, amficache, mem.next), numhash);
-    printf("v0rtex rv = %d, numhash = %d\n", grab_hashes("/bin", kread, amficache, mem.next), numhash);
+    printf("bin rv = %d, numhash = %d\n", grab_hashes("/bin", kread, amficache, mem.next), numhash);
     printf("usr rv = %d, numhash = %d\n", grab_hashes("/usr", kread, amficache, mem.next), numhash);
     printf("sbin rv = %d, numhash = %d\n", grab_hashes("/sbin", kread, amficache, mem.next), numhash);
-    system("/usr/libexec/cydia/firmware.sh"); //fix firmware dependency
+    printf("dpkg rv = %d, numhash = %d\n", grab_hashes("/.dpkg/dpkg", kread, amficache, mem.next), numhash);
         
-    if (hastweaks) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"tweak.deb"];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-            NSLog(@"\npath = %@ \n", filePath);
-            NSString *cmd = [NSString stringWithFormat:@"dpkg --ignore-depends mobilesubstrate,preferenceloader -i %@", filePath];//TODO: properly install mobilesubstrate so I don't have to ignore the dependency
-          system([cmd UTF8String]); //install
-          sleep(2);
-          [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil]; //clean up
-      }
-   }
-}
+    }
     //second amfi patch
     else {
     /* printf("usrbin rv = %d, numhash = %d\n", grab_hashes("/usr/bin", kread, amficache, mem.next), numhash);
@@ -205,10 +191,28 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
     kwrite(kernel_trust + sizeof(mem), allhash, numhash * 20);
     kwrite64(trust_chain, kernel_trust);
     
+    if (hastweaks) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"tweak.deb"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            NSLog(@"\npath = %@ \n", filePath);
+            NSString *firstcmd = [NSString stringWithFormat:@"dpkg -e %@ /v0rtex", filePath];
+            system([firstcmd UTF8String]);
+            printf("v0rtex rv = %d, numhash = %d\n", grab_hashes("/v0rtex", kread, amficache, mem.next), numhash);
+            NSString *secondcmd = [NSString stringWithFormat:@"dpkg --ignore-depends preferenceloader -i %@", filePath];
+            system([secondcmd UTF8String]); //install
+            sleep(2);
+            [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil]; //clean up
+        }
+    }
+    
     if (!isv0rtex) {
     free(allhash);
     free(allkern);
     free(amfitab);
+    system("/usr/libexec/cydia/firmware.sh");
     }
     //this is the old code
     //char *tt = "echo 'dlopen(\"/Library/MobileSubstrate/MobileSubstrate.dylib\", RTLD_LAZY)'| cycript -p SpringBoard";
