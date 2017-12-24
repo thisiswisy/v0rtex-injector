@@ -43,7 +43,7 @@ BOOL init_symbols()
     
     // iPhone 5S 10.2
     if (strcmp(u.version, "Darwin Kernel Version 16.3.0: Tue Nov 29 21:40:09 PST 2016; root:xnu-3789.32.1~4/RELEASE_ARM64_S5L8960X") == 0) {
-
+        
         OFFSET_ZONE_MAP                             = 0xfffffff00755a360;//done
         OFFSET_KERNEL_MAP                           = 0xfffffff0075b6058;//done
         OFFSET_KERNEL_TASK                          = 0xfffffff0075b6050;//done
@@ -80,7 +80,7 @@ BOOL init_symbols()
     }
     //7 10.3.1 I THINK
     else if (strcmp(u.version, "Darwin Kernel Version 16.5.0: Thu Feb 23 23:22:55 PST 2017; root:xnu-3789.52.2~7/RELEASE_ARM64_T8010") == 0) {
-                    
+        
         OFFSET_ZONE_MAP                             = 0xfffffff007590478;
         OFFSET_KERNEL_MAP                           = 0xfffffff0075ec050;
         OFFSET_KERNEL_TASK                          = 0xfffffff0075ec048;
@@ -152,7 +152,7 @@ BOOL init_symbols()
         OFFSET_ROP_ADD_X0_X0_0x10              =0xfffffff006525174;
     }
     //6s 10.3.1
-    else if (strcmp(u.machine, "iPhone8,1") == 0) {
+    else if (strcmp(u.machine, "iPhone8,1") == 0 || strcmp(u.machine, "iPhone8,2") == 0) {
         if ([ver  isEqual: @"Version 10.3.1 (Build 14E304)"])
         {
             OFFSET_ZONE_MAP                             = 0xfffffff007548478;
@@ -172,7 +172,7 @@ BOOL init_symbols()
         }
     }
     //6S 10.3.3
-    else if (strcmp(u.machine, "iPhone8,1") == 0)
+    else if (strcmp(u.machine, "iPhone8,1") == 0 || strcmp(u.machine, "iPhone8,2") == 0)
     {
         if ([ver isEqual: @"Version 10.3.3 (Build 14G60)"])
         {
@@ -201,4 +201,3 @@ BOOL init_symbols()
     
     return TRUE;
 }
-
