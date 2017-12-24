@@ -355,8 +355,8 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
         [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
         [fileMgr removeItemAtPath:@"/bin/sh" error:nil];
-        chmod("/.installed_v0rtexb4", 0777);
-        [fileMgr removeItemAtPath:@"/.installed_v0rtexb4" error:nil];
+        //chmod("/.installed_v0rtexb4", 0777);
+        //[fileMgr removeItemAtPath:@"/.installed_v0rtexb4" error:nil];
         
         // copy in all our bins
         NSLog(@"copying bins...");
