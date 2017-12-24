@@ -450,10 +450,13 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             chown("/Library/LaunchDaemons/dropbear.plist", 0, 0);
             chmod("/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist", 0644);
             chown("/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist", 0, 0);
-            system("launchctl load /Library/LaunchDaemons/*");
-            
+            chmod("/Library/LaunchDaemons/0.reload.plist", 0644);
+            chown("/Library/LaunchDaemons/0.reload.plist", 0, 0); 
+            system("launchctl load /Library/LaunchDaemons/dropbear.plist");
+            system("launchctl load /Library/LaunchDaemons/com.saurik.Cydia.Startup.plist");
+            system("echo 'killall SpringBoard' > /usr/libexec/reload");
             if ([self.hastweaks isOn]) {
-             system("killall_ SpringBoard && cynject $(pidof SpringBoard) /Library/MobileSubstrate/MobileSubstrate.dylib");
+             system("launchctl load /Library/LaunchDaemons/0.reload.plist");
             }
         });
         
