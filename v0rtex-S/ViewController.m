@@ -435,7 +435,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         //second amfi patch, binaries, tweaks & Cydia
         int amfi2 = patch_amfi(tfp0, kslide, NO, [self.hastweaks isOn]);
         [self writeText:[NSString stringWithFormat:@"cydia amfi: %d", amfi2]];
-        system("/v0rtex/extrainst_");
+        system("/v0rtex/extrainst_"); //taken from substrate, patched the move.sh string so it doesn't stash
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSLog(@"cleaning up...");
             [fileMgr removeItemAtPath:@"/v0rtex/bins" error:nil];
