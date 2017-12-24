@@ -98,6 +98,7 @@ BOOL init_symbols()
         
     }
     
+    //6 10.3.1
     else if(strcmp(u.version, "Darwin Kernel Version 16.5.0: Thu Feb 23 23:22:54 PST 2017; root:xnu-3789.52.2~7/RELEASE_ARM64_T7000") == 0) {
         OFFSET_ZONE_MAP                        =0xfffffff007558478;
         OFFSET_KERNEL_MAP                      =0xfffffff0075b4050;
@@ -149,6 +150,47 @@ BOOL init_symbols()
         OFFSET_IPC_PORT_MAKE_SEND              =0xfffffff007099aa0;
         OFFSET_IOSURFACEROOTUSERCLIENT_VTAB    =0xfffffff006f25538;
         OFFSET_ROP_ADD_X0_X0_0x10              =0xfffffff006525174;
+    }
+    //6s 10.3.1
+    else if (strcmp(u.machine, "iPhone8,1") == 0) {
+        if ([ver  isEqual: @"Version 10.3.1 (Build 14E304)"])
+        {
+            OFFSET_ZONE_MAP                             = 0xfffffff007548478;
+            OFFSET_KERNEL_MAP                           = 0xfffffff0075a4050;
+            OFFSET_KERNEL_TASK                          = 0xfffffff0075a4048;
+            OFFSET_REALHOST                             = 0xfffffff00752aba0;
+            OFFSET_BZERO                                = 0xfffffff007081f80;
+            OFFSET_BCOPY                                = 0xfffffff007081dc0;
+            OFFSET_COPYIN                               = 0xfffffff007180720;
+            OFFSET_COPYOUT                              = 0xfffffff007180914;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL               = 0xfffffff007099efc;
+            OFFSET_IPC_KOBJECT_SET                      = 0xfffffff0070ad154;
+            OFFSET_IPC_PORT_MAKE_SEND                   = 0xfffffff007099a20;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB         = 0xfffffff006e7c9f8;
+            OFFSET_ROP_ADD_X0_X0_0x10                   = 0xfffffff006465174;
+            OFFSET_ROOT_MOUNT_V_NODE                    = 0xfffffff0075a40b0;
+        }
+    }
+    //6S 10.3.3
+    else if (strcmp(u.machine, "iPhone8,1") == 0)
+    {
+        if ([ver isEqual: @"Version 10.3.3 (Build 14G60)"])
+        {
+            OFFSET_ZONE_MAP                            = 0xfffffff007548478;
+            OFFSET_KERNEL_MAP                          = 0xfffffff0075a4050;
+            OFFSET_KERNEL_TASK                         = 0xfffffff0075a4048;
+            OFFSET_REALHOST                            = 0xfffffff00752aba0;
+            OFFSET_BZERO                               = 0xfffffff007081f80;
+            OFFSET_BCOPY                               = 0xfffffff007081dc0;
+            OFFSET_COPYIN                              = 0xfffffff0071803a0;
+            OFFSET_COPYOUT                             = 0xfffffff007180594;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL              = 0xfffffff007099e94;
+            OFFSET_IPC_KOBJECT_SET                     = 0xfffffff0070ad16c;
+            OFFSET_IPC_PORT_MAKE_SEND                  = 0xfffffff0070999b8;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB        = 0xfffffff006e7c9f8;
+            OFFSET_ROP_ADD_X0_X0_0x10                  = 0xfffffff006462174;
+            OFFSET_ROOT_MOUNT_V_NODE                   = 0xfffffff0075a40b0;
+        }
     }
     
     else
