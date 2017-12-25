@@ -2,6 +2,7 @@
 
 Get v0rtex-njector IPA here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b5
 
+DEMO IMAGES: https://i.imgur.com/25jpFZN.jpg & https://i.imgur.com/D6dnjFj.png
 -------------------------------------------------
 NEW IN BETA 5:
 
@@ -53,6 +54,7 @@ tweaks tested & confirmed working by me:
 - Sleek'n'bouncy 10
 - DummyPass
 - Zeppelin (working as of b4)
+- NoSlowAnimations
 
 not working:
 
@@ -63,10 +65,10 @@ Only some devices work: offsets will be added by time
 Supported devices:
 
 - 5S 10.3-10.3.3 (tested)
-- 6 10.3.1 (tested)
-- 7 10.3.1 & 10.3.3 (not tested)
+- 6/6 Plus 10.3.1 (tested)
+- 7/7 Plus 10.3.1 & 10.3.3 (not tested)
 - SE 10.3.1 (not tested)
-- 6S 10.3.1 - 10.3.3 (not tested)
+- 6S/6S Plus 10.3.1 - 10.3.3 (not tested)
 - iPod Touch 6G 10.3.2 & 10.3.3 (not tested)
 - More soon. DON'T ASK "WHEN" AND DON'T BEG "PLZ PLS"
 
