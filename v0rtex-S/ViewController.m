@@ -355,9 +355,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
         [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
         [fileMgr removeItemAtPath:@"/bin/sh" error:nil];
-        //chmod("/.installed_v0rtexb4", 0777);
-        //[fileMgr removeItemAtPath:@"/.installed_v0rtexb4" error:nil];
-        
+
         // copy in all our bins
         NSLog(@"copying bins...");
         
@@ -412,16 +410,17 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         //installed?
         int f = open("/.installed_v0rtexb4", O_RDONLY);
         
-        if (f == -1) {
+        if (f == -1 || [self.reinstallcydia isOn]) {
+            system("rm -rf /var/lib/dpkg && ln -sf /.dpkg/dpkg /var/lib/dpkg"); //if we have an older version remove it
             // extract bootstrap.tar
             execprog(tfp0, kslide, 0, "/v0rtex/tar", (const char **)&(const char*[]){ "/v0rtex/tar", "--preserve-permissions", "--no-overwrite-dir", "-xvf", "/v0rtex/bootstrap.tar", "-C", "/", NULL });
-        
+
             //trust all the binaries
             
             open("/.installed_v0rtexb4", O_RDWR|O_CREAT);
             open("/.cydia_no_stash",O_RDWR|O_CREAT);
             
-            system("/usr/bin/uicache");
+            //system("/usr/bin/uicache");
             system("killall -SIGSTOP cfprefsd");
             NSMutableDictionary* md = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.apple.springboard.plist"];
             [md setObject:[NSNumber numberWithBool:YES] forKey:@"SBShowNonDefaultSystemApps"];
