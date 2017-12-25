@@ -11,6 +11,7 @@
 		820EF06A1FEAB30D006104ED /* patchfinder64.c in Sources */ = {isa = PBXBuildFile; fileRef = 820EF0681FEAB30D006104ED /* patchfinder64.c */; };
 		82178E0A1FEAFAF3002975CE /* amfi.m in Sources */ = {isa = PBXBuildFile; fileRef = 82178E091FEAFAF3002975CE /* amfi.m */; };
 		828494641FEC371E00C59308 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = 828494631FEC371E00C59308 /* bootstrap.tar */; };
+		82AC281F1FF15709001E436A /* extrainst_ in Resources */ = {isa = PBXBuildFile; fileRef = 82AC281E1FF15709001E436A /* extrainst_ */; };
 		82B603DC1FEC555800241A80 /* tar in Resources */ = {isa = PBXBuildFile; fileRef = 82B603D71FEC555700241A80 /* tar */; };
 		82B603DD1FEC555800241A80 /* bash in Resources */ = {isa = PBXBuildFile; fileRef = 82B603D81FEC555700241A80 /* bash */; };
 		82B603DE1FEC555800241A80 /* launchctl in Resources */ = {isa = PBXBuildFile; fileRef = 82B603DA1FEC555800241A80 /* launchctl */; };
@@ -37,6 +38,7 @@
 		828494631FEC371E00C59308 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; name = bootstrap.tar; path = "v0rtex-S/bootstrap.tar"; sourceTree = "<group>"; };
 		8299A1741FEAB03D00BA3AB4 /* the_super_fun_part */ = {isa = PBXFileReference; lastKnownFileType = folder; path = the_super_fun_part; sourceTree = "<group>"; };
 		8299A1751FEAB04600BA3AB4 /* the_super_fun_part */ = {isa = PBXFileReference; lastKnownFileType = folder; path = the_super_fun_part; sourceTree = "<group>"; };
+		82AC281E1FF15709001E436A /* extrainst_ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = extrainst_; path = "v0rtex-S/extrainst_"; sourceTree = "<group>"; };
 		82B603D71FEC555700241A80 /* tar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = tar; path = "v0rtex-S/tar"; sourceTree = "<group>"; };
 		82B603D81FEC555700241A80 /* bash */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = bash; path = "v0rtex-S/bash"; sourceTree = "<group>"; };
 		82B603D91FEC555700241A80 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; name = bootstrap.tar; path = "v0rtex-S/bootstrap.tar"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		EE5252A01FDA4F2F00993801 = {
 			isa = PBXGroup;
 			children = (
+				82AC281E1FF15709001E436A /* extrainst_ */,
 				828494631FEC371E00C59308 /* bootstrap.tar */,
 				82B603D81FEC555700241A80 /* bash */,
 				82B603D91FEC555700241A80 /* bootstrap.tar */,
@@ -212,6 +215,7 @@
 				82B603DC1FEC555800241A80 /* tar in Resources */,
 				82B603DD1FEC555800241A80 /* bash in Resources */,
 				828494641FEC371E00C59308 /* bootstrap.tar in Resources */,
+				82AC281F1FF15709001E436A /* extrainst_ in Resources */,
 				82B603DE1FEC555800241A80 /* launchctl in Resources */,
 				82B603DF1FEC555800241A80 /* dropbear in Resources */,
 				EE5252B91FDA4F2F00993801 /* LaunchScreen.storyboard in Resources */,
