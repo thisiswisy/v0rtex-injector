@@ -1,8 +1,26 @@
-# v0rtex-injector beta 4
+# v0rtex-injector beta 5
 
-Get v0rtex tweak injector here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b4
+Get v0rtex-njector IPA here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b5
 
-- Only tweaks that hook springboard will work. postinst script should be fixed (beta 4 new)
+-------------------------------------------------
+NEW IN BETA 5:
+
+1. More devices
+2. tweaks load properly
+3. bootstrap extracts properly
+4. bug fixes
+-------------------------------------------------
+TODO:
+
+1. Make cydo run as root (so Cydia works)
+2. Make something like PreferenceLoader (so you can change settings)
+3. More devices
+4. ??
+----------------------------------------
+
+What is this? Something that lets you install tweaks on iOS 10.3.x
+
+- Only tweaks that hook springboard will work. postinst scripts should be fixed (beta 4 new)
 
 - you can't change preferences in settings. gotta do that manually (don't ask how)
 
@@ -12,7 +30,7 @@ Get v0rtex tweak injector here: https://github.com/thisiswisy/v0rtex-injector/re
 
 - this is for devs & inpatient people
 
-- ~~ssh is temporarily disabled (read the comments to see why)~~ Added SSH!
+- ~~ssh is temporarily disabled (read the comments to see why)~~ Added SSH! (BETA 2)
 
 ~~there's no safe mode or no-substrate mode, be careful what you install~~
 - Added no-tweaks mode (NEW BETA 2) 
@@ -32,19 +50,19 @@ tweaks tested & confirmed working by me:
 
 not working:
 
-- anemone (PROBABLY)
+- anemone (may do something on the future as I had Anemone working when kppless was released for 10.2)
 
 Only some devices work: offsets will be added by time
 
 Supported devices:
 
-- 5S (10.3.1 - tested)
-- 6 (10.3.1 - tested)
-- 7 10.3.1 (not tested)
-- SE 10.3.1 (not tested - experimental) (NEW IN BETA 2)
-- 6S 10.3.1 (not tested) (NEW IN BETA 3)
-- 6S 10.3.2 (not tested)
-- 6S 10.3.3 (not tested - experimental)
+- 5S 10.3-10.3.3 (tested)
+- 6 10.3.1 (tested)
+- 7 10.3.1 & 10.3.3 (not tested)
+- SE 10.3.1 (not tested)
+- 6S 10.3.1 - 10.3.3 (not tested)
+- iPod Touch 6G 10.3.2 & 10.3.3 (not tested)
+- More soon. DON'T ASK "WHEN" AND DON'T BEG "PLZ PLS"
 
 TODO: clean up symbols.m, use updated exploit, A WAY TO REMOVE TWEAKS, more devices
 
