@@ -9,13 +9,15 @@ NEW IN BETA 5:
 2. tweaks load properly
 3. bootstrap extracts properly
 4. bug fixes
+5. added "reset jailbreak" option. use this if you have any issues
 -------------------------------------------------
 TODO:
 
 1. Make cydo run as root (so Cydia works)
-2. Make something like PreferenceLoader (so you can change settings)
+2. Make something like PreferenceLoader within the app itself (so you can change settings)
 3. More devices
-4. ??
+4. amfid patch
+5. ??
 ----------------------------------------
 
 What is this? Something that lets you install tweaks on iOS 10.3.x
