@@ -191,7 +191,9 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
     kwrite(kernel_trust + sizeof(mem), allhash, numhash * 20);
     kwrite64(trust_chain, kernel_trust);
     
-    if (hastweaks) {
+    if (hastweaks && !isv0rtex) {
+        system("/usr/libexec/cydia/firmware.sh");
+        
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         
@@ -212,7 +214,6 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
     free(allhash);
     free(allkern);
     free(amfitab);
-    system("/usr/libexec/cydia/firmware.sh");
     }
     //this is the old code
     //char *tt = "echo 'dlopen(\"/Library/MobileSubstrate/MobileSubstrate.dylib\", RTLD_LAZY)'| cycript -p SpringBoard";

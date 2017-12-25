@@ -149,7 +149,7 @@ BOOL init_symbols()
             OFFSET_IPC_PORT_ALLOC_SPECIAL               = 0xfffffff007099efc;
             OFFSET_IPC_KOBJECT_SET                      = 0xfffffff0070ad154;
             OFFSET_IPC_PORT_MAKE_SEND                   = 0xfffffff007099a20;
-            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB         = 0xfffffff006e83af8;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB         = 0xfffffff006e849f8;
             OFFSET_ROP_ADD_X0_X0_0x10                   = 0xfffffff006481174;
             OFFSET_ROOT_MOUNT_V_NODE                    = 0xfffffff0075a40b0;
         }
@@ -195,7 +195,132 @@ BOOL init_symbols()
            OFFSET_ROOT_MOUNT_V_NODE = 0xfffffff0075a40b0;
         }
     }
-    
+    //5s 10.3.3
+    else if (strcmp(u.machine, "iPhone6,1") == 0 || strcmp(u.machine, "iPhone6,2") == 0)
+    {
+        if ([ver isEqual: @"Version 10.3.3 (Build 14G60)"])
+        {
+            OFFSET_ZONE_MAP = 0xfffffff00754c478;
+            OFFSET_KERNEL_MAP = 0xfffffff0075a8050;
+            OFFSET_KERNEL_TASK = 0xfffffff0075a8048;
+            OFFSET_REALHOST = 0xfffffff00752eba0;
+            OFFSET_BZERO = 0xfffffff007081f80;
+            OFFSET_BCOPY = 0xfffffff007081dc0;
+            OFFSET_COPYIN = 0xfffffff007180e98;
+            OFFSET_COPYOUT = 0xfffffff00718108c;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL = 0xfffffff007099f14;
+            OFFSET_IPC_KOBJECT_SET = 0xfffffff0070ad1ec;
+            OFFSET_IPC_PORT_MAKE_SEND = 0xfffffff007099a38;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB = 0xfffffff006f25538;
+            OFFSET_ROP_ADD_X0_X0_0x10 = 0xfffffff006522174;
+            OFFSET_ROOT_MOUNT_V_NODE = 0xfffffff0075a40b0;
+        }
+    }
+    //5s 10.3.2
+    else if (strcmp(u.machine, "iPhone6,1") == 0 || strcmp(u.machine, "iPhone6,2") == 0)
+    {
+        if ([ver isEqual: @"Version 10.3.2 (Build 14F89)"])
+        {
+            OFFSET_ZONE_MAP = 0xfffffff00754c478;
+            OFFSET_KERNEL_MAP = 0xfffffff0075a8050;
+            OFFSET_KERNEL_TASK = 0xfffffff0075a8048;
+            OFFSET_REALHOST = 0xfffffff00752eba0;
+            OFFSET_BZERO = 0xfffffff007081f80;
+            OFFSET_BCOPY = 0xfffffff007081dc0;
+            OFFSET_COPYIN = 0xfffffff0071811ec;
+            OFFSET_COPYOUT = 0xfffffff0071813e0;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL = 0xfffffff007099f14;
+            OFFSET_IPC_KOBJECT_SET = 0xfffffff0070ad1ec;
+            OFFSET_IPC_PORT_MAKE_SEND = 0xfffffff007099a38;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB = 0xfffffff006f25538;
+            OFFSET_ROP_ADD_X0_X0_0x10 = 0xfffffff006526174;
+            OFFSET_ROOT_MOUNT_V_NODE = 0xfffffff0075a80b0;
+        }
+    }
+    //5s 10.3
+    else if (strcmp(u.machine, "iPhone6,1") == 0 || strcmp(u.machine, "iPhone6,2") == 0)
+    {
+        if ([ver isEqual: @"Version 10.3 (Build 14E277)"])
+        {
+            OFFSET_ZONE_MAP = 0xfffffff00754c478;
+            OFFSET_KERNEL_MAP = 0xfffffff0075a8050;
+            OFFSET_KERNEL_TASK = 0xfffffff0075a8048;
+            OFFSET_REALHOST = 0xfffffff00752eba0;
+            OFFSET_BZERO = 0xfffffff007081f80;
+            OFFSET_BCOPY = 0xfffffff007081dc0;
+            OFFSET_COPYIN = 0xfffffff007181218;
+            OFFSET_COPYOUT = 0xfffffff00718140c;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL = 0xfffffff007099f7c;
+            OFFSET_IPC_KOBJECT_SET = 0xfffffff0070ad1d4;
+            OFFSET_IPC_PORT_MAKE_SEND = 0xfffffff007099aa0;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB = 0xfffffff006f25538;
+            OFFSET_ROP_ADD_X0_X0_0x10 = 0xfffffff006525174;
+            OFFSET_ROOT_MOUNT_V_NODE = 0xfffffff0075a80b0;
+        }
+    }
+    //7 10.3.3
+    else if (strcmp(u.machine, "iPhone9,1") == 0 || strcmp(u.machine, "iPhone9,2") == 0 || strcmp(u.machine, "iPhone9,3") == 0 || strcmp(u.machine, "iPhone9,4") == 0)
+    {
+        if ([ver isEqual: @"Version 10.3.3 (Build 14G60)"])
+        {
+            OFFSET_ZONE_MAP                        =0xfffffff007590478;
+            OFFSET_KERNEL_MAP                      =0xfffffff0075ec050;
+            OFFSET_KERNEL_TASK                     =0xfffffff0075ec048;
+            OFFSET_REALHOST                        =0xfffffff007572ba0;
+            OFFSET_BZERO                           =0xfffffff0070c1f80;
+            OFFSET_BCOPY                           =0xfffffff0070c1dc0;
+            OFFSET_COPYIN                          =0xfffffff0071c5db4;
+            OFFSET_COPYOUT                         =0xfffffff0071c6094;
+            OFFSET_ROOT_MOUNT_V_NODE               =0xfffffff0075ec0b0;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL          =0xfffffff0070deff4;
+            OFFSET_IPC_KOBJECT_SET                 =0xfffffff0070f22cc;
+            OFFSET_IPC_PORT_MAKE_SEND              =0xfffffff0070deb18;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB    =0xfffffff006e4a238;
+            OFFSET_ROP_ADD_X0_X0_0x10              =0xfffffff0063c5398;
+        }
+    }
+    //iPod 6 10.3.3
+    else if (strcmp(u.machine, "iPod7,1") == 0 )
+    {
+        if ([ver isEqual: @"Version 10.3.3 (Build 14G60)"])
+        {
+            OFFSET_ZONE_MAP                        =0xfffffff007558478;
+            OFFSET_KERNEL_MAP                      =0xfffffff0075b4050;
+            OFFSET_KERNEL_TASK                     =0xfffffff0075b4048;
+            OFFSET_REALHOST                        =0xfffffff00753aba0;
+            OFFSET_BZERO                           =0xfffffff00708df80;
+            OFFSET_BCOPY                           =0xfffffff00708ddc0;
+            OFFSET_COPYIN                          =0xfffffff00718d028;
+            OFFSET_COPYOUT                         =0xfffffff00718d21c;
+            OFFSET_ROOT_MOUNT_V_NODE               =0xfffffff0075b40b0;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL          =0xfffffff0070a60b4;
+            OFFSET_IPC_KOBJECT_SET                 =0xfffffff0070b938c;
+            OFFSET_IPC_PORT_MAKE_SEND              =0xfffffff0070a5bd8;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB    =0xfffffff006ef2d78;
+            OFFSET_ROP_ADD_X0_X0_0x10              =0xfffffff00651a174;
+        }
+    }
+    //iPod 6 10.3.2
+    else if (strcmp(u.machine, "iPod7,1") == 0 )
+    {
+        if ([ver isEqual: @"Version 10.3.2 (Build 14F89)"])
+        {
+            OFFSET_ZONE_MAP                        =0xfffffff007558478;
+            OFFSET_KERNEL_MAP                      =0xfffffff0075b4050;
+            OFFSET_KERNEL_TASK                     =0xfffffff0075b4048;
+            OFFSET_REALHOST                        =0xfffffff00753aba0;
+            OFFSET_BZERO                           =0xfffffff00708df80;
+            OFFSET_BCOPY                           =0xfffffff00708ddc0;
+            OFFSET_COPYIN                          =0xfffffff00718d37c;
+            OFFSET_COPYOUT                         =0xfffffff00718d570;
+            OFFSET_ROOT_MOUNT_V_NODE               =0xfffffff0075b40b0;
+            OFFSET_IPC_PORT_ALLOC_SPECIAL          =0xfffffff0070a60b4;
+            OFFSET_IPC_KOBJECT_SET                 =0xfffffff0070b938c;
+            OFFSET_IPC_PORT_MAKE_SEND              =0xfffffff0070a5bd8;
+            OFFSET_IOSURFACEROOTUSERCLIENT_VTAB    =0xfffffff006ef2d78;
+            OFFSET_ROP_ADD_X0_X0_0x10              =0xfffffff00651e174;
+        }
+    }
     else
     {
         LOG("Device not supported yet.");
