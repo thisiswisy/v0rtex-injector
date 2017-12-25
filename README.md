@@ -20,7 +20,11 @@ TODO:
 5. ??
 ----------------------------------------
 
-What is this? Something that lets you install tweaks on iOS 10.3.x
+HOW TO FIND DEB LINK????
+- This gives you **LEGAL** debs straight from their original sources: http://ipod-touch-max.ru/cydia/index.php?cat=search&keyword=YOUR_TWEAK_NAME_HERE
+
+What is this? 
+- Something that lets you install tweaks on iOS 10.3.x
 
 - Only tweaks that hook springboard will work. postinst scripts should be fixed (beta 4 new)
 
