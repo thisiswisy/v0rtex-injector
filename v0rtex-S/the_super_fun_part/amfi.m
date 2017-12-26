@@ -153,6 +153,7 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
     //first amfi patch
     
     if (isv0rtex) {
+    printf("v0rtex rv = %d, numhash = %d\n", grab_hashes("/v0rtex", kread, amficache, mem.next), numhash); //WHY ON EARTH THIS LINE WASN'T HERE. IT'S THE SECOND TIME I FORGET IT
     printf("bin rv = %d, numhash = %d\n", grab_hashes("/bin", kread, amficache, mem.next), numhash);
     printf("usr rv = %d, numhash = %d\n", grab_hashes("/usr", kread, amficache, mem.next), numhash);
     printf("sbin rv = %d, numhash = %d\n", grab_hashes("/sbin", kread, amficache, mem.next), numhash);
