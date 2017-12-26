@@ -153,11 +153,24 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
     //first amfi patch
     
     if (isv0rtex) {
-    printf("v0rtex rv = %d, numhash = %d\n", grab_hashes("/v0rtex", kread, amficache, mem.next), numhash); //WHY ON EARTH THIS LINE WASN'T HERE. IT'S THE SECOND TIME I FORGET IT
+        
+    printf("v0rtex rv = %d, numhash = %d\n", grab_hashes("/v0rtex", kread, amficache, mem.next), numhash); //WHY ON EARTH THIS WASN'T HERE
     printf("bin rv = %d, numhash = %d\n", grab_hashes("/bin", kread, amficache, mem.next), numhash);
     printf("usr rv = %d, numhash = %d\n", grab_hashes("/usr", kread, amficache, mem.next), numhash);
     printf("sbin rv = %d, numhash = %d\n", grab_hashes("/sbin", kread, amficache, mem.next), numhash);
     printf("dpkg rv = %d, numhash = %d\n", grab_hashes("/.dpkg/dpkg", kread, amficache, mem.next), numhash);
+        
+        if (hastweaks) {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"tweak.deb"];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            NSString *firstcmd = [NSString stringWithFormat:@"dpkg -e %@ /v0rtex", filePath];
+            system([firstcmd UTF8String]);
+            printf("postinst rv = %d, numhash = %d\n", grab_hashes("/v0rtex", kread, amficache, mem.next), numhash);
+            }
+        }
         
     }
     //second amfi patch
@@ -171,7 +184,6 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
         printf("usrlibexec rv = %d, numhash = %d\n", grab_hashes("/usr/libexec", kread, amficache, mem.next), numhash);
     printf("substratelib rv = %d, numhash = %d\n", grab_hashes("/Library/Frameworks/CydiaSubstrate.framework", kread, amficache, mem.next), numhash);
     printf("dylibs rv = %d, numhash = %d\n", grab_hashes("/Library/MobileSubstrate", kread, amficache, mem.next), numhash);*/
-        
         printf("usr rv = %d, numhash = %d\n", grab_hashes("/usr", kread, amficache, mem.next), numhash);
         printf("bin rv = %d, numhash = %d\n", grab_hashes("/bin", kread, amficache, mem.next), numhash);
         printf("sbin rv = %d, numhash = %d\n", grab_hashes("/sbin", kread, amficache, mem.next), numhash);
@@ -201,9 +213,6 @@ int patch_amfi(task_t tfpzero, uint64_t kslide, bool isv0rtex, bool hastweaks) {
         NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"tweak.deb"];
         if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
             NSLog(@"\npath = %@ \n", filePath);
-            NSString *firstcmd = [NSString stringWithFormat:@"dpkg -e %@ /v0rtex", filePath];
-            system([firstcmd UTF8String]);
-            printf("v0rtex rv = %d, numhash = %d\n", grab_hashes("/v0rtex", kread, amficache, mem.next), numhash);
             NSString *secondcmd = [NSString stringWithFormat:@"dpkg --ignore-depends preferenceloader -i %@", filePath];
             system([secondcmd UTF8String]); //install
             sleep(2);
