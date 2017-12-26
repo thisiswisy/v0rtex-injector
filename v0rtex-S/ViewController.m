@@ -444,6 +444,8 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             [fileMgr removeItemAtPath:@"/v0rtex/start.sh" error:nil];
             [fileMgr removeItemAtPath:@"/v0rtex/tar" error:nil];
             [fileMgr removeItemAtPath:@"/v0rtex/extrainst_" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/postinst" error:nil];
+            [fileMgr removeItemAtPath:@"/v0rtex/prerm" error:nil];
             
             chmod("/Library/LaunchDaemons/dropbear.plist", 0644);
             chown("/Library/LaunchDaemons/dropbear.plist", 0, 0);
@@ -453,10 +455,11 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             chown("/Library/LaunchDaemons/0.reload.plist", 0, 0); 
             system("launchctl load /Library/LaunchDaemons/dropbear.plist");
             system("launchctl load /Library/LaunchDaemons/com.saurik.Cydia.Startup.plist");
-            system("echo 'killall SpringBoard' > /usr/libexec/reload");
             system("echo 'string=$(ps aux | grep $1 | grep -v grep | grep -v pidof | grep -v pidsof); list=(${string}); for pid in ${!list[@]}; do ((pid == 1)) && printf \"${list[$pid]}\"; done' > /usr/bin/pidof; chmod 777 /usr/bin/pidof");
+            system("echo 'killall SpringBoard' > /usr/libexec/reload");
             if ([self.hastweaks isOn]) {
-             system("launchctl load /Library/LaunchDaemons/0.reload.plist");
+              system("launchctl unload /Library/LaunchDaemons/0.reload.plist");
+              system("launchctl load /Library/LaunchDaemons/0.reload.plist");
             }
         });
         
@@ -469,6 +472,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
     [self writeText:@"done."]; //logging does not work now for now
     sleep(3);
 }
+
 
 - (void)writeText:(NSString *)text {
     self.outputView.text = [self.outputView.text stringByAppendingString:[text stringByAppendingString:@"\n"]];
