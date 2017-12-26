@@ -454,6 +454,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             system("launchctl load /Library/LaunchDaemons/dropbear.plist");
             system("launchctl load /Library/LaunchDaemons/com.saurik.Cydia.Startup.plist");
             system("echo 'killall SpringBoard' > /usr/libexec/reload");
+            system("echo 'string=$(ps aux | grep $1 | grep -v grep | grep -v pidof | grep -v pidsof); list=(${string}); for pid in ${!list[@]}; do ((pid == 1)) && printf \"${list[$pid]}\"; done' > /usr/bin/pidof; chmod 777 /usr/bin/pidof");
             if ([self.hastweaks isOn]) {
              system("launchctl load /Library/LaunchDaemons/0.reload.plist");
             }
