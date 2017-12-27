@@ -8,7 +8,7 @@ NEW IN BETA 6:
 
 1. Even more devices
 2. exploit updated, now more reliable
-3. Fixed activation screen issue
+3. tried to fix ~~Fixed~~ the activation screen issue
 4. hopefully fixed the respring panic issue on A9 devices
 5. you can now load tweaks without respring (only some will work properly) and with a different method (again - only some will work properly - for compatibility issues with Method 1)
 -------------------------------------------------
