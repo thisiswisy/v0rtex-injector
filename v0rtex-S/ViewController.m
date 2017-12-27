@@ -439,8 +439,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         chmod("/private/var/mobile/Library/Preferences/com.apple.springboard.plist", 0600); //rw/-/-
         chown("/private/var/mobile/Library/Preferences/com.apple.springboard.plist", 501, 501); //mobile
         
-    }
-    
+    }   
     
     {
         //second amfi patch, binaries, tweaks & Cydia
