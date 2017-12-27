@@ -1,8 +1,16 @@
-# v0rtex-injector beta 5
+# v0rtex-injector beta 6
 
-Get v0rtex-njector IPA here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b5
+Get v0rtex-njector IPA here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b6
 
 DEMO IMAGES: https://i.imgur.com/25jpFZN.jpg & https://i.imgur.com/D6dnjFj.png
+-----------------------------------
+NEW IN BETA 6:
+
+1. Even more devices
+2. exploit updated, now more reliable
+3. Fixed activation screen issue
+4. hopefully fixed the respring panic issue on A9 devices
+5. you can now load tweaks without respring (only some will work properly) and with a different method (again - only some will work properly - for compatibility issues with Method 1)
 -------------------------------------------------
 NEW IN BETA 5:
 
@@ -44,9 +52,9 @@ What is this?
 
 - to install find link to the deb file, run exploit, paste, click ok. If you want to just activate current tweaks click ok without entering any link
 
-- I've tested this multiple times and didn't encounter any bootloop ~~but USE THIS AT YOUR OWN RISK. IT IS A BETA! The code should be fairly better now~~. Others have tested as well. It is perfectly safe.
+- I've tested this multiple times and didn't encounter any bootloop. Others have tested as well. It is perfectly safe.
 
-- **INSTALLING TWEAKS SHOULD BE 100% SAFE, ~~MY CONCERN IS EXTRACTING THE BOOTSTRAP, ONCE YOU GET THAT WORKING THR REST SHOULD BE OK.** postinst scripts do not run, all that will be done is injecting tweaks into SpringBoard. The worst is a respring loop that can be fixed by rebooting ~~. A respring loop can't happen because I am using modified killall binary instead of what substrate does. tweaks will load ONLY when you respring manually
+- **INSTALLING TWEAKS IS 100% SAFE, A respring loop can't happen because I am using modified killall binary instead of what substrate does. tweaks will load ONLY when you respring manually** THIS TOOL IS ON BETA 6 SO FAR AND IS NOT DANGEROUS IN ANY WAY. WILL NOT INTERFERE WITH NEW JAILBREAKS.
 
 tweaks tested & confirmed working by me:
 
@@ -58,21 +66,16 @@ tweaks tested & confirmed working by me:
 
 not working:
 
-- anemone (may do something on the future as I had Anemone working when kppless was released for 10.2)
+- anemone 
 
 Only some devices work: offsets will be added by time
 
 Supported devices:
 
-- 5S 10.3-10.3.3 (tested)
-- 6/6 Plus 10.3.1 (tested)
-- 7/7 Plus 10.3.1 & 10.3.3 (not tested)
-- SE 10.3.1 (not tested)
-- 6S/6S Plus 10.3.1 - 10.3.3 (not tested)
-- iPod Touch 6G 10.3.2 & 10.3.3 (not tested)
-- More soon. DON'T ASK "WHEN" AND DON'T BEG "PLZ PLS"
+- ALL iPhones, iPods on 10.3-10.3.3
+- iPads coming soon. DON'T ASK "WHEN" AND DON'T BEG "PLZ PLS"
 
-TODO: clean up symbols.m, use updated exploit, A WAY TO REMOVE TWEAKS, more devices
+TODO: A WAY TO REMOVE TWEAKS, more devices
 
 thanks to s1guza for exploit, stek29 for telling me how to get cydia work, cheesecakeufo for telling stek29 how to get cydia work, xerub for libjb, theninjaprawn for his techniques, PsychoTea (and who worked on his project) for some other stuff, Wisy for hosting on his github & cleaning up code a little bit. 
 
