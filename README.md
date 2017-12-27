@@ -63,6 +63,7 @@ tweaks tested & confirmed working by me:
 - DummyPass
 - Zeppelin (working as of b4)
 - NoSlowAnimations
+- RoundDock
 
 not working:
 
