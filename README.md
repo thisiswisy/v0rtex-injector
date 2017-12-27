@@ -1,6 +1,6 @@
 # v0rtex-injector beta 6
 
-Get v0rtex-njector IPA here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b6
+Get v0rtex-injector IPA here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b6
 
 DEMO IMAGES: https://i.imgur.com/25jpFZN.jpg & https://i.imgur.com/D6dnjFj.png
 -----------------------------------
