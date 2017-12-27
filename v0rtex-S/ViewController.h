@@ -11,5 +11,7 @@
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UISwitch *reinstallcydia;
 @property (weak, nonatomic) IBOutlet UISwitch *hastweaks;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *method;
+@property (weak, nonatomic) IBOutlet UISwitch *shallrespring;
 @end
 
