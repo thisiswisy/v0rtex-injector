@@ -241,14 +241,14 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
 - (IBAction)runSploitButton:(UIButton *)sender {
     if ([self.hastweaks isOn]) {
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Install deb"
-                                                                              message: @"Input link to deb to install"
+                                                                              message: @"If you want to install a deb, do it now, otherwise leave this blank"
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"deb link";
         textField.keyboardType = UIKeyboardTypeDefault;
     }];
    
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSArray * textfields = alertController.textFields;
         UITextField * namefield = textfields[0];
         NSLog(@"%@",namefield.text);
@@ -282,7 +282,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
     kern_ucred = 0;
     self_proc = 0;
     
-    kern_return_t ret = v0rtex(&tfp0, &kslide, &kern_ucred, &self_proc);
+    kern_return_t ret = v0rtex(NULL, NULL, &tfp0, &kslide, &kern_ucred, &self_proc);
     
     if (ret != KERN_SUCCESS) {
         [self writeText:@"ERROR: exploit failed"];
@@ -429,7 +429,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             }
         }
     
-    { //fix lte & springboard issues
+    { //fix LTE & iMessage & Activation screen issues
         
         chmod("/private", 0777);
         chmod("/private/var", 0777);
@@ -467,7 +467,21 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             system("launchctl load /Library/LaunchDaemons/dropbear.plist");
             system("launchctl load /Library/LaunchDaemons/com.saurik.Cydia.Startup.plist");
             system("echo 'string=$(ps aux | grep $1 | grep -v grep | grep -v pidof | grep -v pidsof); list=(${string}); for pid in ${!list[@]}; do ((pid == 1)) && printf \"${list[$pid]}\"; done' > /usr/bin/pidof; chmod 777 /usr/bin/pidof");
-            system("echo 'killall SpringBoard' > /usr/libexec/reload");
+            if ([self.shallrespring isOn]) {
+                system("echo 'killall SpringBoard' > /usr/libexec/reload");
+            }
+            else {
+                system("echo 'killall nothing' > /usr/libexec/reload");
+            }
+            if (self.method.selectedSegmentIndex == 0) {
+                NSLog(@"doing method 1");
+                system("printf \"#/bin/bash\\nif [ \\$# -eq \"2\" ]; then\\nkillall_ \\$1 \\$2 && cynject \\$(pidof System/Library/CoreServices/SpringBoard.app/SpringBoard) /Library/MobileSubstrate/MobileSubstrate.dylib\\nelif [ \\$# -eq \"1\" ]; then\\nkillall_ \\$1 && cynject \\$(pidof System/Library/CoreServices/SpringBoard.app/SpringBoard) /Library/MobileSubstrate/MobileSubstrate.dylib\\nfi\" > /usr/bin/killall");
+            }
+            else {
+                NSLog(@"doing method 2");
+                system("printf \"#/bin/bash\\nif [ \\$# -eq \"2\" ]; then\\nkillall_ \\$1 \\$2\\nfor i in /Library/MobileSubstrate/DynamicLibraries/*.dylib\\ndo\\ncynject \\$(pidof System/Library/CoreServices/SpringBoard.app/SpringBoard) \\$i\\ndone\\nelif [ \\$# -eq \"1\" ]; then\\nkillall_ \\$1\\nfor i in /Library/MobileSubstrate/DynamicLibraries/*.dylib\\ndo\\ncynject \\$(pidof System/Library/CoreServices/SpringBoard.app/SpringBoard) \\$i\\ndone\\nfi\" > /usr/bin/killall");
+            }
+            
             if ([self.hastweaks isOn]) {
               system("launchctl unload /Library/LaunchDaemons/0.reload.plist");
               system("launchctl load /Library/LaunchDaemons/0.reload.plist");
