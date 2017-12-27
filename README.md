@@ -12,6 +12,9 @@ NEW IN BETA 6:
 4. hopefully fixed the respring panic issue on A9 devices
 5. you can now load tweaks without respring (only some will work properly) and with a different method (again - only some will work properly - for compatibility issues with Method 1)
 -------------------------------------------------
+
+IF YOU ARE STILL HAVING THE "HELLO SCREEN" ISSUE EACH REBOOT: rejailbreak a few times, preferably with tweaks and respring turned off. If that does not work make a backup of your device and, use Reset all contents & settings, restore backup, rejailbreak with "Reset jailbreak" enabled
+
 NEW IN BETA 5:
 
 1. More devices
