@@ -15,6 +15,8 @@ NEW IN BETA 6:
 
 IF YOU ARE STILL HAVING THE "HELLO SCREEN" ISSUE EACH REBOOT: rejailbreak a few times, preferably with tweaks and respring turned off. If that does not work make a backup of your device and use Reset all Settings. If that doesn't work then the last choice is reset all contents and settings, restore backup, rejailbreak with "Reset jailbreak" enabled.
 
+**UPDATE: SEEMS LIKE IF YOU DISABLE PASSCODE THE ISSUE WILL NOT PRESENT ANYMORE**
+
 NEW IN BETA 5:
 
 1. More devices
