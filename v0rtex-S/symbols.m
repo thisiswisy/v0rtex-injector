@@ -419,7 +419,7 @@ BOOL init_symbols()
             
         }
     }
-    //iPod 6 10.3
+    //iPod 6
     else if (strcmp(u.machine, "iPod7,1") == 0)
     {
         if ([ver isEqual: @"Version 10.3 (Build 14E277)"])
@@ -494,7 +494,7 @@ BOOL init_symbols()
         }
     }
     
-    //iPad Pro 10.3"
+    //iPad Pro 10.5"
     else if (strcmp(u.machine, "iPad7,3") == 0 || strcmp(u.machine, "iPad7,4") == 0)
     {
         if ([ver isEqual: @"Version 10.3.2 (Build 14F8089)"])
@@ -603,7 +603,7 @@ BOOL init_symbols()
             OFFSET_ROOT_MOUNT_V_NODE               =0xfffffff0075a80b0;
         }
     }
-    //iPad Mini 4 && iPad Air 2
+    //iPad Mini 4 & iPad Air 2
      else if (strcmp(u.machine, "iPad5,1") == 0 || strcmp(u.machine, "iPad5,2") == 0 || strcmp(u.machine, "iPad5,3") == 0 || strcmp(u.machine, "iPad5,4") == 0) {
          if (strcmp(u.version, "Darwin Kernel Version 16.5.0: Thu Feb 23 23:22:54 PST 2017; root:xnu-3789.52.2~7/RELEASE_ARM64_T7000") == 0) {
              OFFSET_ZONE_MAP                        =0xfffffff007558478;
