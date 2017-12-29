@@ -111,7 +111,7 @@ int execprog(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char *prog
                     uint32_t selfcred_temp = rk32_via_tfp0(tfp0, kern_ucred + 0x78);
                     wk32(tfp0, self_ucred + 0x78, selfcred_temp);
                     
-                    for (int i = 0; i < 12; i++) {
+                    for (int i = 0; i < 3; i++) {
                         wk32(tfp0, self_ucred + 0x18 + (i * sizeof(uint32_t)), 0);
                     }
                     
@@ -195,7 +195,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
                     uint32_t selfcred_temp = rk32_via_tfp0(tfp0, kern_ucred + 0x78);
                     wk32(tfp0, self_ucred + 0x78, selfcred_temp);
                     
-                    for (int i = 0; i < 12; i++) {
+                    for (int i = 0; i < 3; i++) {
                         wk32(tfp0, self_ucred + 0x18 + (i * sizeof(uint32_t)), 0);
                     }
                     
@@ -381,6 +381,11 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
                          toPath:@"/v0rtex/extrainst_" error: &error];
         if (error) NSLog(@"Error: %@", error);
         
+        [fileMgr removeItemAtPath:@"/usr/libexec/cydia/cydo" error:nil];
+        [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/cydo"]
+                         toPath:@"/usr/libexec/cydia/cydo" error: &error];
+        if (error) NSLog(@"Error: %@", error);
+        
         [fileMgr copyItemAtPath:[bundlePath stringByAppendingString:@"/bash"]
                          toPath:@"/bin/sh" error: &error];
         if (error) NSLog(@"Error: %@", error);
@@ -390,6 +395,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
         chmod("/v0rtex/tar", 0777);
         chmod("/bin/sh", 0777);
         chmod("/v0rtex/extrainst_", 0777);
+        chmod("/usr/libexec/cydia/cydo", 0777);
         
         // create dir's and files for dropbear
         mkdir("/etc", 0777);
@@ -429,7 +435,7 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
             }
         }
     
-    { //fix LTE & iMessage & Activation screen issues
+    { 
         
         chmod("/private", 0777);
         chmod("/private/var", 0777);
@@ -496,6 +502,8 @@ int execprog_clean(task_t tfp0, uint64_t kslide, uint64_t kern_ucred, const char
     [self writeText:@""];
     [self writeText:@"done."]; //logging does not work now for now
     sleep(3);
+    extern void startJBD(void);
+    startJBD();
 }
 
 
