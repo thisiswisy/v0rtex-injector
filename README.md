@@ -53,6 +53,16 @@ NEW IN BETA 5:
 3. bootstrap extracts properly
 4. bug fixes
 5. added "reset jailbreak" option. use this if you have any issues
+-------------
+
+HOW TO COMPILE???
+
+If you're using Xcode 9:
+1. Open Xcode from an admin account
+2. Find any line where system() is mentioned
+3. CMD + click on system() -> go to definition
+4. Remove the "IOS_PROHIBITED" line or something like that and save the file
+
 -------------------------------------------------
 
 HOW TO FIND DEB LINK????
@@ -110,5 +120,6 @@ thanks to s1guza for exploit, stek29 for telling me how to get cydia work, chees
 
 Mr.Cryptiic: happy now?
 
+------
 
 brought to you by Jake
