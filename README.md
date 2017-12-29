@@ -24,8 +24,10 @@ THERE'S NO IPA YET AND WON'T BE TILL EVERYTHING IS FIXED PROPERLY! NON-DEVS: DO 
 IF YOU USE BETA 7 DO NOT REINSTALL/REMOVE Cydia Substrate! IT *MAY* BREAK ALL OF YOUR TWEAKS
 
 If you did that and tweaks stopped working, run this via SSH:
+
     rm /Library/MobileSubstrate/DynamicLibraries && mv /var/stash/*/*/DynamicLibraries /Library/MobileSubstrate/DynamicLibraries
-Respringing via Cydia will unload all of your tweaks
+    
+- Respringing via Cydia will unload all of your tweaks
 
 -----------------------------------
 NEW IN BETA 6:
