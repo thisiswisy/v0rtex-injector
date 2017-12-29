@@ -102,10 +102,12 @@ Supported devices:
 
 thanks to s1guza for exploit, stek29 for telling me how to get cydia work, cheesecakeufo for telling stek29 how to get cydia work, xerub for libjb, theninjaprawn for his techniques, PsychoTea, Sticktron (and who worked on his project) for some other stuff, Wisy for hosting on his github & cleaning up code a little bit. 
 
-Forked from an older version of this: https://github.com/PsychoTea/v0rtex-S
-Got cydo binary from an older version of this: https://github.com/iabem97/topanga
-Got jailbreakd idea from this: https://github.com/iabem97/topanga
-Got a lot of techniques from this: https://github.com/ninjaprawn/
+- Forked from an older version of this: https://github.com/PsychoTea/v0rtex-S
+- Got cydo binary from an older version of this: https://github.com/iabem97/topanga
+- Got jailbreakd idea from this: https://github.com/iabem97/topanga
+- Got a lot of techniques from this: https://github.com/ninjaprawn/
+- Got amfi patch from this: https://github.com/xerub/extra_recipe/tree/kppless
+
 Mr.Cryptiic: happy now?
 
 
