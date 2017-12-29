@@ -83,6 +83,23 @@ void wk64(uint64_t kaddr, uint64_t val) {
     wk32(tfp0, kaddr, lower);
     wk32(tfp0, kaddr + 4, higher);
 }
+size_t kread(uint64_t where, void *p, size_t size) {
+    int rv;
+    size_t offset = 0;
+    while (offset < size) {
+        mach_vm_size_t sz, chunk = 2048;
+        if (chunk > size - offset) {
+            chunk = size - offset;
+        }
+        rv = mach_vm_read_overwrite(tfp0, where + offset, chunk, (mach_vm_address_t)p + offset, &sz);
+        if (rv || sz == 0) {
+            fprintf(stderr, "[e] error reading kernel @%p\n", (void *)(offset + where));
+            break;
+        }
+        offset += sz;
+    }
+    return offset;
+}
 
 size_t kwrite(uint64_t where, const void *p, size_t size) {
     int rv;
