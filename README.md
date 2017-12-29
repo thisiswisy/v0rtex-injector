@@ -1,8 +1,23 @@
-# v0rtex-injector beta 6
+# v0rtex-injector beta 7
 
-Get v0rtex-injector IPA here: https://github.com/thisiswisy/v0rtex-injector/releases/tag/b6
+Get v0rtex-injector IPA here (BETA 6): https://github.com/thisiswisy/v0rtex-injector/releases/tag/b6
 
 DEMO IMAGES: https://i.imgur.com/25jpFZN.jpg & https://i.imgur.com/D6dnjFj.png
+----------------
+NEW IN BETA 7:
+1. Support for iPad Air 2, iPad Mini 3, iPad Mini 4, iPad Pro 10.5"
+2. Added basic jailbreakd daemon (thanks cheesecakeufo)
+3. Cydia can install *some* stuff
+
+- Jailbreakd will only start with respring disabled
+- once you quit the app jailbreakd STOPS and Cydia crashes
+
+TODO:
+
+- run jailbreakd in a separate process
+- amfid patch (if you're impatient AND on ios 10.3-10.3.2 run triple_fetch)
+
+THERE'S NO IPA YET AND WON'T BE TILL EVERYTHING IS FIXED PROPERLY! NON-DEVS: DO NOT USE BETA 7
 -----------------------------------
 NEW IN BETA 6:
 
@@ -13,9 +28,15 @@ NEW IN BETA 6:
 5. you can now load tweaks without respring (only some will work properly) and with a different method (again - only some will work properly - for compatibility issues with Method 1)
 -------------------------------------------------
 
-IF YOU ARE STILL HAVING THE "HELLO SCREEN" ISSUE EACH REBOOT: rejailbreak a few times, preferably with tweaks and respring turned off. If that does not work make a backup of your device and use Reset all Settings. If that doesn't work then the last choice is reset all contents and settings, restore backup, rejailbreak with "Reset jailbreak" enabled.
+KNOWN ISSUES:
 
-**UPDATE: SEEMS LIKE IF YOU DISABLE PASSCODE THE ISSUE WILL NOT PRESENT ANYMORE**
+- Activation screen each reboot
+
+Possible fixes:
+1. Reset All Settings
+2. Reset All Contents & Settings
+3. Disable passcode
+
 
 NEW IN BETA 5:
 
@@ -79,14 +100,11 @@ Only some devices work: offsets will be added by time
 Supported devices:
 
 - ALL iPhones, iPods on 10.3-10.3.3
-- iPads coming soon. DON'T ASK "WHEN" AND DON'T BEG "PLZ PLS"
+- Some iPads (NO IPA YET!)
 
-TODO: A WAY TO REMOVE TWEAKS, more devices
+
 
 thanks to s1guza for exploit, stek29 for telling me how to get cydia work, cheesecakeufo for telling stek29 how to get cydia work, xerub for libjb, theninjaprawn for his techniques, PsychoTea, Sticktron (and who worked on his project) for some other stuff, Wisy for hosting on his github & cleaning up code a little bit. 
 
-Friendly message to /r/jailbreak:
-
-- if you are concerned about my tool not being safe, check the code yourself, i am willing to help you compile it. I know nullpixel hates me, but his accusations are mostly false. I do not steal code (he says this because once I made a tool that did the same thing as his, he does not have proof I stole code), I do not release malware (he says this because once i released a proxy which AppleBetas removed from /r/sideloaded because he was afraid i could add malware, I did not do that). nullpixel, if you are reading this, I am willing to start from scratch, we should know each-other more, what do you think .-. I changed my thoughts about you since we talked in the jb discord, don't be shy, I know we can be friends :)
 
 brought to you by Jake
