@@ -14,8 +14,10 @@ NEW IN BETA 7:
 
 TODO:
 
-- run jailbreakd in a separate process
-- amfid patch (if you're impatient AND on ios 10.3-10.3.2 run triple_fetch)
+- run jailbreakd in a separate process OR get a proper nosuid patch
+- amfid patch (if you're impatient AND on ios 10.3-10.3.2 just run triple_fetch)
+- something like PreferenceLoader
+- more iPads
 
 THERE'S NO IPA YET AND WON'T BE TILL EVERYTHING IS FIXED PROPERLY! NON-DEVS: DO NOT USE BETA 7
 -----------------------------------
@@ -31,6 +33,7 @@ NEW IN BETA 6:
 KNOWN ISSUES:
 
 - Activation screen each reboot
+- iMessage not working
 
 Possible fixes:
 1. Reset All Settings
@@ -46,14 +49,6 @@ NEW IN BETA 5:
 4. bug fixes
 5. added "reset jailbreak" option. use this if you have any issues
 -------------------------------------------------
-TODO:
-
-1. Make cydo run as root (so Cydia works)
-2. Make something like PreferenceLoader within the app itself (so you can change settings)
-3. More devices
-4. amfid patch
-5. ??
-----------------------------------------
 
 HOW TO FIND DEB LINK????
 - This gives you **LEGAL** debs straight from their original sources: http://ipod-touch-max.ru/cydia/index.php?cat=search&keyword=YOUR_TWEAK_NAME_HERE
@@ -67,14 +62,11 @@ What is this?
 
 - not a substrate replacement
 
-- cydia ~~is broken on purpose~~ now runs but DOES NOT INSTALL ANYTHING (beta 4)
-
 - this is for devs & inpatient people
 
-- ~~ssh is temporarily disabled (read the comments to see why)~~ Added SSH! (BETA 2)
+- SSH via USB on port 2222
 
-~~there's no safe mode or no-substrate mode, be careful what you install~~
-- Added no-tweaks mode (NEW BETA 2) 
+- no-tweaks mode 
 
 - to install find link to the deb file, run exploit, paste, click ok. If you want to just activate current tweaks click ok without entering any link
 
@@ -95,7 +87,6 @@ not working:
 
 - anemone 
 
-Only some devices work: offsets will be added by time
 
 Supported devices:
 
