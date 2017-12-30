@@ -3,6 +3,13 @@
 Get v0rtex-injector IPA here (BETA 6): https://github.com/thisiswisy/v0rtex-injector/releases/tag/b6
 
 DEMO IMAGES: https://i.imgur.com/25jpFZN.jpg & https://i.imgur.com/D6dnjFj.png
+
+UPDATE:
+
+My device bootlooped when trying a new bootstrap and I hadn't set a nonce (gotta wait for new tfp0 exploit, luckily it was a 5S I can downgrade once that happens, well by that time a full jailbreak will have been released anyway xd)
+
+UPDATES will happen but not as frequently. I can't try new stuff to fix the activation issue anymore so I'll just focus on the jailbreakd damon. As of 30.12.2017 Injector uses a better method to find the proc without involving files and pidof. However I can't test it, although it should work just fine. A better jailbreakd which runs in a separate process is being worked on
+
 ----------------
 NEW IN BETA 7:
 1. Support for iPad Air 2, iPad Mini 3, iPad Mini 4, iPad Pro 10.5"
