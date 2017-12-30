@@ -52,15 +52,17 @@ extern kptr_t kern_ucred;
 
 
 
-uint64_t procForPid(pid_t pd) {
+uint64_t procForName(char *name) {
     //THANK YOU NINJAPRAWN
     uint64_t proc = rk64(tfp0, find_allproc());
     printf("\nINFO: proc: %llu", proc);
     while (proc) {
-        uint32_t pid = (uint32_t)rk32_via_tfp0(tfp0, proc + 0x10);
-        //printf("\nINFO: pid: %u", pid);
-        if (pid == pd && pid != 0) {
-            printf("\nINFO: success: pid is: %u and proc is : %llu", pid, proc);
+        char comm[40] = {0};
+        kread(proc + 0x26c, comm, 20);
+        //uint32_t pid = (uint32_t)rk32_via_tfp0(tfp0, proc + 0x10);
+        printf("\n%s's proc: %llu", comm, proc);
+        if (strstr(comm, "cydo")) {
+            printf("\nINFO: success: process is: %c and proc is : %llu", comm, proc);
             return proc;
         }
         proc = rk64(tfp0, proc);
@@ -79,11 +81,11 @@ kern_return_t empower_proc(uint64_t proc, uint64_t kern_ucred) {
 void startJBD() {
     
     for(;;) {
-        system("echo $(pidof cydo) > /var/mobile/cydopid.txt"); //pls don't complain about awful code I'm lazy
-        const char *pid = [[NSString stringWithContentsOfFile:@"/var/mobile/cydopid.txt" encoding:NSUTF8StringEncoding error:nil] UTF8String];
+        //system("echo $(pidof cydo) > /var/mobile/cydopid.txt"); //pls don't complain about awful code I'm lazy
+        //const char *pid = [[NSString stringWithContentsOfFile:@"/var/mobile/cydopid.txt" encoding:NSUTF8StringEncoding error:nil] UTF8String];
         //NSLog(@"found pid is: %s", pid);
-        if (pid != NULL && pid != nil && strcmp(pid, "") != 0) {
-            uint64_t target_proc = procForPid(atoi(pid));
+       // if (pid != NULL && pid != nil && strcmp(pid, "") != 0) {
+            uint64_t target_proc = procForName("cydo");
                 // if (target_proc == -1) break; TODO: FIX THIS. Interrupts loop
             empower_proc(target_proc, kern_ucred);
             
