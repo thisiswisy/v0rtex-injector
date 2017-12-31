@@ -4,6 +4,21 @@ Get v0rtex-injector IPA here (BETA 6): https://github.com/thisiswisy/v0rtex-inje
 
 DEMO IMAGES: https://i.imgur.com/25jpFZN.jpg & https://i.imgur.com/D6dnjFj.png
 
+What is this & what does it offer?
+
+- Install tweaks on iOS 10.3.x (Only tweaks that hook SpringBoard will work, you can't change preferences in settings. gotta do that manually)
+- Not a substrate replacement
+- For devs & impatient people
+- SSH via USB on port 2222
+- No-Tweaks mode in case you don't want tweaks 
+- Patches the AMFI trustcache using xerub's jailbreak library
+- Gets read & write access in the system partition using Todesco's rootfs patch
+- Has the ability to empower any process with a given name (creds to ninjaprawn)
+- The source-code contains a basic jailbreakd to make Cydia temporarily work (creds to cheesecakeufo)
+
+To install a tweak find link to the deb file, run exploit, paste, click "continue". If you want to just activate current tweaks click ok without entering any link
+- **INSTALLING TWEAKS IS 100% SAFE, A respring loop can't happen because I am using modified killall binary instead of what substrate does. tweaks will load ONLY when you respring manually** THIS TOOL IS ON BETA 6 SO FAR AND IS NOT DANGEROUS IN ANY WAY. WILL NOT INTERFERE WITH NEW JAILBREAKS.
+
 UPDATE:
 
 My device bootlooped when trying a new bootstrap and I hadn't set a nonce (gotta wait for new tfp0 exploit, luckily it was a 5S I can downgrade once that happens, well by that time a full jailbreak will have been released anyway xd)
@@ -79,26 +94,6 @@ If you're using Xcode 9:
 HOW TO FIND DEB LINK????
 - This gives you **LEGAL** debs straight from their original sources: http://ipod-touch-max.ru/cydia/index.php?cat=search&keyword=YOUR_TWEAK_NAME_HERE
 
-What is this? 
-- Something that lets you install tweaks on iOS 10.3.x
-
-- Only tweaks that hook springboard will work. postinst scripts should be fixed (beta 4 new)
-
-- you can't change preferences in settings. gotta do that manually (don't ask how)
-
-- not a substrate replacement
-
-- this is for devs & inpatient people
-
-- SSH via USB on port 2222
-
-- no-tweaks mode 
-
-- to install find link to the deb file, run exploit, paste, click ok. If you want to just activate current tweaks click ok without entering any link
-
-- I've tested this multiple times and didn't encounter any bootloop. Others have tested as well. It is perfectly safe.
-
-- **INSTALLING TWEAKS IS 100% SAFE, A respring loop can't happen because I am using modified killall binary instead of what substrate does. tweaks will load ONLY when you respring manually** THIS TOOL IS ON BETA 6 SO FAR AND IS NOT DANGEROUS IN ANY WAY. WILL NOT INTERFERE WITH NEW JAILBREAKS.
 
 tweaks tested & confirmed working by me:
 
