@@ -89,7 +89,7 @@ void startJBD() {
                 // if (target_proc == -1) break; TODO: FIX THIS. Interrupts loop
             empower_proc(target_proc, kern_ucred);
             
-        }
+       // }
     }
 }
 
