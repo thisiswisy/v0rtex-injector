@@ -62,7 +62,7 @@ uint64_t procForName(char *name) {
         //uint32_t pid = (uint32_t)rk32_via_tfp0(tfp0, proc + 0x10);
         printf("\n%s's proc: %llu", comm, proc);
         if (strstr(comm, name)) {
-            printf("\nINFO: success: process is: %c and proc is : %llu", comm, proc);
+            printf("\nINFO: success: process is: %s and proc is : %llu", comm, proc);
             return proc;
         }
         proc = rk64(tfp0, proc);
