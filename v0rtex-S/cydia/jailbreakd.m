@@ -3,7 +3,7 @@
 //  v0rtex
 //
 //  Created by Jake James on 2017-12-07.
-//  Copyright © 2017 NOO ONE. NO RIGHTS DESERVED
+//  Copyright © 2017 cheesecakeufo, ninjaprawn, xerub. ALL RIGHTS DESERVED
 //  THANK YOU CHEESECAKEUFO FOR THE IDEA AND CYDO
 
 #import "ViewController.h"
